@@ -65,49 +65,63 @@
     <li class="govuk-breadcrumbs__list-item">
       <a class="govuk-breadcrumbs__link" href="https://digital-land.github.io/">Digital Land</a>
     </li>
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Organisations</li>
+
+
+    <li class="govuk-breadcrumbs__list-item" aria-current="page"><a class="govuk-breadcrumbs__link" href="/organisation">Organisation</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Planning Inspectorate</li>
+
   </ol>
+
+
+
 </div>
+
       <main class="govuk-main-wrapper">
+      <span class="govuk-caption-xl">Organisation</span>
+      <h1 class="govuk-heading-xl">Planning Inspectorate</h1>
 
-  <div class="govuk-grid-row">
-		<div class="govuk-grid-column-full">
-    	<h1 class="govuk-heading-xl">
-            Organisations
-    	</h1>
-		</div>
-	</div>
-
-    <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
-
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one markdown-output contents-section">
-      <p>Contents</p>
-<ul>
-{% for tag in tags %}
-        <li><a href="#{{tag}}">{{tags[tag]["plural"]}}</a></li>
-{% endfor %}
-</ul>
-    </div>
-	  <div class="govuk-grid-column-two-thirds markdown-output has-side-contents">
-
-{% for tag in tags %}
-<h2 id="{{tag}}">{{tags[tag]["plural"]}}</h2>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-l"></p>
-        <ul class="govuk-list">
 
-{% for organisation in tags[tag]["organisations"] %}
-<li>
-    <a href="{{organisation["path"]}}/" class="govuk-link govuk-body-l">{{organisation["name"]}}</a>
-</li>
-{% endfor %}
-        </ul>
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Organisation
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="government-organisation">government-organisation:EA39</a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Website
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="https://www.gov.uk/government/organisations/planning-inspectorate">https://www.gov.uk/government/organisations/planning-inspectorate</a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Statistical geography
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="http://statistics.data.gov.uk/id/statistical-geography/"></a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Open Data Communities URI
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <a href="http://opendatacommunities.org/def/concept/folders/organisations/the-planning-inspectorate">http://opendatacommunities.org/def/concept/folders/organisations/the-planning-inspectorate</a>
+    </dd>
+  </div>
+</dl>
+
   </div>
 </div>
-{% endfor %}
       </main>
   </div>
 
@@ -144,8 +158,7 @@
     <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '')</script>
 <script type="application/javascript">
 var doNotTrack = false;
-if (!doNotTrack) {
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+if (!doNotTrack) { window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-127566551-1', 'auto');
 ga('send', 'pageview');
 }
