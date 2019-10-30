@@ -91,7 +91,7 @@
       Organisation
     </dt>
     <dd class="govuk-summary-list__value">
-      <a href="{{organisation["prefix"]}}">{{organisation["organisation"]}}</a>
+      <a href="https://{{organisation["prefix"]}}.register.gov.uk/record/{{organisation["id"]}}">{{organisation["organisation"]}}</a>
     </dd>
   </div>
   <div class="govuk-summary-list__row">
@@ -102,6 +102,8 @@
       <a href="{{organisation["website"]}}">{{organisation["website"]}}</a>
     </dd>
   </div>
+
+{% if organisation["statistical-geography"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Statistical geography
@@ -110,14 +112,43 @@
       <a href="http://statistics.data.gov.uk/id/statistical-geography/{{organisation["statistical-geography"]}}">{{organisation["statistical-geography"]}}</a>
     </dd>
   </div>
+{% endif %}
+
+{% if organisation["toid"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     TOID
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <a href="http://data.ordnancesurvey.co.uk/id/{{organisation["toid"]}}">{{organisation["toid"]}}</a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if organisation["wikidata"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Wikidata
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <a href="https://wikidata.org/wiki/{{organisation["wikidata"]}}">{{organisation["wikidata"]}}</a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if organisation["opendatacommunities"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
      Open Data Communities URI
     </dt>
     <dd class="govuk-summary-list__value">
-    <a href="{{organisation["opendatacommunities"]}}">{{organisation["opendatacommunities"]}}</a>
+    <input class="copy-and-paste" type="text" value="{{organisation["opendatacommunities"]}}" size="65" readonly>
+    [<a href="{{organisation["opendatacommunities"]}}">visit</a>]
+    <!-- see huffduffer.com for how @adactio does this beautifully -->
     </dd>
   </div>
+{% endif %}
+
 </dl>
 
   </div>

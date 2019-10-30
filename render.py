@@ -10,7 +10,6 @@ env = jinja2.Environment(loader=loader)
 index = env.get_template("index.html")
 item = env.get_template("organisation.html")
 
-
 tags = OrderedDict()
 for o in csv.DictReader(open("tag.csv")):
     o["organisations"] = []
@@ -21,6 +20,7 @@ for o in csv.DictReader(open("organisation.csv")):
 
     o["path-segments"] = list(filter(None, o["organisation"].split(":")))
     prefix = o["prefix"] = o["path-segments"][0]
+    o["id"] = o["path-segments"][1]
 
     o.setdefault("tags", [])
     o["tags"].append(prefix)
