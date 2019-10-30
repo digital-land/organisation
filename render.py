@@ -7,10 +7,24 @@ import csv
 loader = jinja2.FileSystemLoader(searchpath="./templates")
 env = jinja2.Environment(loader=loader)
 index = env.get_template("index.html")
+item = env.get_template("organisation.html")
 
 organisations = []
-for row in csv.DictReader(open("organisation.csv")):
-    organisations.append(row)
+for o in csv.DictReader(open("organisation.csv")):
 
-with open("index.html", 'w') as f:
+    o["path_segments"] = list(filter(None, o["organisation"].split(":")))
+    o["path"] = "/".join(o["path_segments"])
+
+    if o["path"] and not os.path.exists(o["path"]):
+        os.makedirs(o["path"])
+
+    # filter
+    if o["opendatacommunities"]:
+        organisations.append(o)
+
+        with open(o["path"] + "/" + "index.html", "w") as f:
+            f.write(item.render(organisation=o))
+
+
+with open("index.html", "w") as f:
     f.write(index.render(organisations=organisations))

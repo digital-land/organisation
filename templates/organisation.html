@@ -67,25 +67,59 @@
     </li>
 
 
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">Organisation</li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page"><a class="govuk-breadcrumbs__link" href="/organisation">Organisation</a></li>
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">{{organisation["name"]}}</li>
 
   </ol>
+
+
+
 </div>
+
       <main class="govuk-main-wrapper">
-    
-<h1 class="govuk-heading-xl">
-  Organisation
-</h1>
+      <span class="govuk-caption-xl">Organisation</span>
+      <h1 class="govuk-heading-xl">{{organisation["name"]}}</h1>
+
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-l"></p>
-        <ul class="govuk-list">
-{% for organisation in organisations %}
-<li>
-    <a href="{{organisation["path"]}}/" class="govuk-link govuk-body-l">{{organisation["name"]}}</a>
-</li>
-{% endfor %}
-        </ul>
+
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Organisation
+    </dt>
+    <dd class="govuk-summary-list__value">
+      {{organisation["organisation"]}}
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Website
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="{{organisation["website"]}}">{{organisation["website"]}}</a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Statistical geography
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="http://statistics.data.gov.uk/id/statistical-geography/{{organisation["statistical-geography"]}}">{{organisation["statistical-geography"]}}</a>
+    </dd>
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Open Data Communities URI
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <a href="{{organisation["opendatacommunities"]}}">{{organisation["opendatacommunities"]}}</a>
+    </dd>
+  </div>
+</dl>
+
   </div>
 </div>
       </main>
@@ -124,8 +158,7 @@
     <script>if (typeof window.GOVUK === 'undefined') document.body.className = document.body.className.replace('js-enabled', '')</script>
 <script type="application/javascript">
 var doNotTrack = false;
-if (!doNotTrack) {
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+if (!doNotTrack) { window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
 ga('create', 'UA-127566551-1', 'auto');
 ga('send', 'pageview');
 }
