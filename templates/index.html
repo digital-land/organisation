@@ -76,11 +76,16 @@
 <h1 class="govuk-heading-xl">
   Organisation
 </h1>
+
+{% for tag in tags %}
+<h2>{{tags[tag]["plural"]}}</h2>
+
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-l"></p>
         <ul class="govuk-list">
-{% for organisation in organisations %}
+
+{% for organisation in tags[tag]["organisations"] %}
 <li>
     <a href="{{organisation["path"]}}/" class="govuk-link govuk-body-l">{{organisation["name"]}}</a>
 </li>
@@ -88,6 +93,7 @@
         </ul>
   </div>
 </div>
+{% endfor %}
       </main>
   </div>
 
