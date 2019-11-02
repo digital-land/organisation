@@ -1,20 +1,15 @@
-# Digital Land collection of brownfield sites
+# Digital Land organisation pages
 
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/psd/openregister/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/en/stable/)
 
-A prototype of a national dataset of brownfield sites assembled from data collected from each Local Planning Authority.
+The list of organisations is taken from the [https://github.com/digital-land/organisation-collection](organisation-collection) repository.
 
-The list of registers collected is kept and maintained in [datasets/brownfield-land.csv](datasets/brownfield-land.csv).
-
-# Updating the collection
+# Updating the pages
 
 We recommend working in [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) before installing the python dependencies:
 
     $ make init
-
-The datasets are collected into the [collection](collection) directories:
-
     $ make
 
 # Licence
