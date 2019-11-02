@@ -4,6 +4,15 @@ import os
 import jinja2
 import csv
 from collections import OrderedDict
+from datetime import datetime
+
+
+def date_text(d):
+    try:
+        return datetime.strptime(d, "%Y-%m-%d").strftime("%-d %B %Y")
+    except ValueError:
+        return None
+
 
 loader = jinja2.FileSystemLoader(searchpath="./templates")
 env = jinja2.Environment(loader=loader)
@@ -17,10 +26,12 @@ for o in csv.DictReader(open("tag.csv")):
 
 
 for o in csv.DictReader(open("organisation.csv")):
-
     o["path-segments"] = list(filter(None, o["organisation"].split(":")))
     prefix = o["prefix"] = o["path-segments"][0]
     o["id"] = o["path-segments"][1]
+
+    o["start-date-text"] = date_text(o["start-date"])
+    o["end-date-text"] = date_text(o["end-date"])
 
     o.setdefault("tags", [])
     o["tags"].append(prefix)
