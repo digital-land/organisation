@@ -36,7 +36,6 @@ for o in csv.DictReader(open("organisation.csv")):
     o.setdefault("tags", [])
     o["tags"].append(prefix)
 
-    print(o["path-segments"])
     if (prefix in tags) and (
         o["opendatacommunities"]
         or o["path-segments"][0] in ("local-authority-eng", "development-corporation")
