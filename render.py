@@ -38,6 +38,7 @@ for o in csv.DictReader(open("organisation.csv")):
 
     if (prefix in tags) and (
         o["opendatacommunities"]
+        or o["wikidata"]
         or o["path-segments"][0] in ("local-authority-eng", "development-corporation")
     ):
         tags[prefix]["organisations"].append(o)
@@ -45,7 +46,7 @@ for o in csv.DictReader(open("organisation.csv")):
 
 for tag in tags:
     for o in tags[tag]["organisations"]:
-        o["path"] = "/".join(o["path-segments"])
+        o["path"] = "docs/" + "/".join(o["path-segments"])
 
         if o["path"] and not os.path.exists(o["path"]):
             os.makedirs(o["path"])
@@ -53,5 +54,5 @@ for tag in tags:
         with open(o["path"] + "/" + "index.html", "w") as f:
             f.write(item.render(organisation=o))
 
-with open("index.html", "w") as f:
+with open("docs/index.html", "w") as f:
     f.write(index.render(tags=tags))
