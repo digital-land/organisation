@@ -117,10 +117,22 @@
     </dd>
   </div>
 
+{% if organisation["opendatacommunities-area"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Open Data Communities Area
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <p><a href="{{organisation["opendatacommunities-area"]}}">{{organisation["opendatacommunities-area"]}}</a></p>
+    <p></p>
+    </dd>
+  </div>
+{% endif %}
+
 {% if organisation["opendatacommunities"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-    Open Data Communities URI
+    Open Data Communities Organisation
     </dt>
     <dd class="govuk-summary-list__value">
     <p><a href="{{organisation["opendatacommunities"]}}">{{organisation["opendatacommunities"]}}</a></p>
@@ -130,6 +142,7 @@
     </dd>
   </div>
 {% endif %}
+
 
 </dl>
 
