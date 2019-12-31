@@ -4,9 +4,24 @@ import os
 import jinja2
 import csv
 from collections import OrderedDict
+import requests
+from cachecontrol import CacheControl
+from cachecontrol.caches.file_cache import FileCache
 from datetime import datetime
 
+session = CacheControl(requests.session(), cache=FileCache(".cache"))
+
+organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
+organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
 docs = "docs/"
+
+
+def get(url):
+    r = session.get(url)
+    r.raise_for_status()
+    return r.text
+
+
 
 def date_text(d):
     try:
@@ -31,12 +46,12 @@ index_template = env.get_template("index.html")
 organisation_template = env.get_template("organisation.html")
 
 tags = OrderedDict()
-for o in csv.DictReader(open("tag.csv")):
+for o in csv.DictReader(get(organisation_tag_csv).splitlines()):
     o["organisations"] = []
     tags[o["tag"]] = o
 
 
-for o in csv.DictReader(open("organisation.csv")):
+for o in csv.DictReader(get(organisation_csv).splitlines()):
     o["path-segments"] = list(filter(None, o["organisation"].split(":")))
     prefix = o["prefix"] = o["path-segments"][0]
     o["id"] = o["path-segments"][1]
