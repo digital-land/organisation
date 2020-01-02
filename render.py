@@ -61,13 +61,7 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
 
     o.setdefault("tags", [])
     o["tags"].append(prefix)
-
-    if (prefix in tags) and (
-        o["opendatacommunities"]
-        or o["wikidata"]
-        or o["path-segments"][0] in ("local-authority-eng", "development-corporation")
-    ):
-        tags[prefix]["organisations"].append(o)
+    tags[prefix]["organisations"].append(o)
 
 
 for tag in tags:
