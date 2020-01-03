@@ -36,6 +36,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body-l">
+    <h2 class="govuk-heading-l" id="organisation">Organisation</h2>
 {% if organisation["start-date"] or organisation["end-date"] %}
   This organisation was
   {% if organisation["start-date"] %} established on the <time datetime="{{ organisation["start-date"] }}">{{ organisation["start-date-text"] }}</time>{% endif -%}
@@ -54,6 +55,7 @@
       <a href="https://{{organisation["prefix"]}}.register.gov.uk/record/{{organisation["id"]}}">{{organisation["organisation"]}}</a>
     </dd>
   </div>
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Website
@@ -62,28 +64,6 @@
       <a href="{{organisation["website"]}}">{{organisation["website"]}}</a>
     </dd>
   </div>
-
-{% if organisation["statistical-geography"] %}  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Statistical geography
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <a href="http://statistics.data.gov.uk/id/statistical-geography/{{organisation["statistical-geography"]}}">{{organisation["statistical-geography"]}}</a>
-    </dd>
-  </div>
-{% endif %}
-
-{% if organisation["toid"] %}  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-     TOID
-    </dt>
-    <dd class="govuk-summary-list__value">
-    <a href="http://data.ordnancesurvey.co.uk/id/{{organisation["toid"]}}">{{organisation["toid"]}}</a>
-    </dd>
-  </div>
-{% endif %}
 
 {% if organisation["wikidata"] %}  
   <div class="govuk-summary-list__row">
@@ -103,17 +83,6 @@
     </dt>
     <dd class="govuk-summary-list__value">
     {{organisation["billing-authority"]}}
-    </dd>
-  </div>
-{% endif %}
-
-{% if organisation["census-area"] %}  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Census area 
-    </dt>
-    <dd class="govuk-summary-list__value">
-    {{organisation["census-area"]}}
     </dd>
   </div>
 {% endif %}
@@ -139,18 +108,6 @@
     </dd>
   </div>
 
-{% if organisation["opendatacommunities-area"] %}  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Open Data Communities Area
-    </dt>
-    <dd class="govuk-summary-list__value">
-    <p><a href="{{organisation["opendatacommunities-area"]}}">{{organisation["opendatacommunities-area"]}}</a></p>
-    <p></p>
-    </dd>
-  </div>
-{% endif %}
-
 {% if organisation["opendatacommunities"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
@@ -165,13 +122,87 @@
   </div>
 {% endif %}
 
+{% if organisation["twitter"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Twitter
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <p>@<a href="https://twitter.com/{{organisation["twitter"]}}">{{organisation["twitter"]}}</a></p>
+    </dd>
+  </div>
+{% endif %}
 
-</dl>
-
+  </dl>
   </div>
 </div>
-{% endblock %}
 
+<div class="govuk-grid-row govuk-main-wrapper--l">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l" id="geographical-area">Geographical area</h2>
+
+<dl class="govuk-summary-list">
+
+{% if organisation["statistical-geography"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Statistical geography
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="http://statistics.data.gov.uk/id/statistical-geography/{{organisation["statistical-geography"]}}">{{organisation["statistical-geography"]}}</a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if organisation["toid"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     TOID
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <a href="http://data.ordnancesurvey.co.uk/id/{{organisation["toid"]}}">{{organisation["toid"]}}</a>
+    </dd>
+  </div>
+{% endif %}
+
+{% if organisation["census-area"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Census area 
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {{organisation["census-area"]}}
+    </dd>
+  </div>
+{% endif %}
+
+{% if organisation["opendatacommunities-area"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Open Data Communities Area
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <p><a href="{{organisation["opendatacommunities-area"]}}">{{organisation["opendatacommunities-area"]}}</a></p>
+    </dd>
+  </div>
+{% endif %}
+
+</dl>
+  </div>
+</div>
+
+<div class="govuk-grid-row govuk-main-wrapper--l">
+  <div class="govuk-grid-column-two-thirds">
+    <h2 class="govuk-heading-l" id="download">Download the data</h2>
+    <p class="govuk-body">You can download the data on this page as:</p>
+    <ul class="govuk-list">
+      <li><a href="https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv">CSV</a></li>
+    </ul>
+  </div>
+</div>
+
+
+{% endblock %}
 {% block bodyEnd %}
 {{ super() }}
 <script type="application/javascript">
