@@ -96,6 +96,28 @@
   </div>
 {% endif %}
 
+{% if organisation["billing-authority"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Billing authority
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {{organisation["billing-authority"]}}
+    </dd>
+  </div>
+{% endif %}
+
+{% if organisation["census-area"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Census area 
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {{organisation["census-area"]}}
+    </dd>
+  </div>
+{% endif %}
+
 {% if organisation["esd-inventories"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
