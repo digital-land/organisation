@@ -4,7 +4,7 @@
 
 all:	render
 
-render:	organisation.csv render.py
+render:
 	python3 render.py
 
 black:
