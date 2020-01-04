@@ -22,11 +22,18 @@
 {% for tag in tags %}
 <div class="govuk-grid-row org-count">
   <div class="govuk-grid-column-one-third">
-    <h2 class="govuk-heading-m org-count__name" id="{{tag}}">{{tags[tag]["plural"]}}</h2>
+   {% if tags[tag]["organisations"]|length == 1 %}
+     {% set plural = tags[tag]["name"] %}
+     {% set are = "is" %}
+   {% else %}
+     {% set plural = tags[tag]["plural"] %}
+     {% set are = "are" %}
+   {% endif %}
+    <h2 class="govuk-heading-m org-count__name" id="{{tag}}">{{plural}}</h2>
     <div class="org-count__wrapper">
-      <p class="govuk-visually-hidden">There are
+      <p class="govuk-visually-hidden">There {{are}}
         <span class="js-accessible-department-count">{{ tags[tag]["organisations"]|length }}</span>
-        {{tags[tag]["plural"]}}
+        {{plural}}
       </p>
       <span class="govuk-body govuk-!-font-weight-bold govuk-!-font-size-80 js-department-count" aria-hidden="true">{{ tags[tag]["organisations"]|length }}</span>
     </div>
