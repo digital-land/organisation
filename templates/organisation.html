@@ -35,8 +35,8 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <p class="govuk-body-l">
     <h2 class="govuk-heading-l" id="organisation">Organisation</h2>
+    <p class="govuk-body-l">
 {% if organisation["start-date"] or organisation["end-date"] %}
   This organisation was
   {% if organisation["start-date"] %} established on the <time datetime="{{ organisation["start-date"] }}">{{ organisation["start-date-text"] }}</time>{% endif -%}
@@ -137,6 +137,7 @@
   </div>
 </div>
 
+{% if organisation["statistical-geography"] or organisation["toid"] or organisation["census-area"] or organisation["opendatacommunities-area"] %}
 <div class="govuk-grid-row govuk-main-wrapper--l">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l" id="geographical-area">Geographical area</h2>
@@ -190,6 +191,7 @@
 </dl>
   </div>
 </div>
+{% endif %}
 
 <div class="govuk-grid-row govuk-main-wrapper--l">
   <div class="govuk-grid-column-two-thirds">
