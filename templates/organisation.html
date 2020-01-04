@@ -56,6 +56,18 @@
     </dd>
   </div>
 
+{% if organisation["local-authority-type"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Local authority type
+    </dt>
+    <dd class="govuk-summary-list__value">
+      <a href="https://local-authority-type.register.gov.uk/record/{{organisation["local-authority-type"]}}">{{organisation["local-authority-type"]}}</a>
+    </dd>
+  </div>
+{% endif %}
+
+
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
       Website
@@ -64,6 +76,17 @@
       <a href="{{organisation["website"]}}">{{organisation["website"]}}</a>
     </dd>
   </div>
+
+{% if organisation["twitter"] %}  
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+    Twitter
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <p>@<a href="https://twitter.com/{{organisation["twitter"]}}">{{organisation["twitter"]}}</a></p>
+    </dd>
+  </div>
+{% endif %}
 
 {% if organisation["wikidata"] %}  
   <div class="govuk-summary-list__row">
@@ -111,24 +134,13 @@
 {% if organisation["opendatacommunities"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-    Open Data Communities Organisation
+    Open Data Communities organisation
     </dt>
     <dd class="govuk-summary-list__value">
     <p><a href="{{organisation["opendatacommunities"]}}">{{organisation["opendatacommunities"]}}</a></p>
     <input class="govuk-input copy-and-paste" type="text" value="{{organisation["opendatacommunities"]}}" readonly>
     <!-- see huffduffer.com for how @adactio does this beautifully -->
     <p></p>
-    </dd>
-  </div>
-{% endif %}
-
-{% if organisation["twitter"] %}  
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Twitter
-    </dt>
-    <dd class="govuk-summary-list__value">
-    <p>@<a href="https://twitter.com/{{organisation["twitter"]}}">{{organisation["twitter"]}}</a></p>
     </dd>
   </div>
 {% endif %}
@@ -180,7 +192,7 @@
 {% if organisation["opendatacommunities-area"] %}  
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-    Open Data Communities Area
+    Open Data Communities area
     </dt>
     <dd class="govuk-summary-list__value">
     <p><a href="{{organisation["opendatacommunities-area"]}}">{{organisation["opendatacommunities-area"]}}</a></p>
