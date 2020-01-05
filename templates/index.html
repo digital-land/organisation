@@ -9,7 +9,7 @@
 
     <p class="govuk-body">Contents</p>
     <ul class="govuk-list govuk-list--bullet">
-    {% for tag in tags -%}
+    {% for tag in tags|sort -%}
       <li><a href="#{{tag}}">{{tags[tag]["plural"]}}</a></li>
     {%- endfor %}
       <li><a href="#download">Download the data</a></h2>
@@ -19,7 +19,7 @@
 
 <hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
 
-{% for tag in tags %}
+{% for tag in tags|sort %}
 <div class="govuk-grid-row org-count">
   <div class="govuk-grid-column-one-third">
    {% if tags[tag]["organisations"]|length == 1 %}
