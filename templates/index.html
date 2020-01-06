@@ -41,7 +41,7 @@
 
   <div class="govuk-grid-column-two-thirds">
     <ul class="govuk-list">
-    {% for organisation in tags[tag]["organisations"] %}
+    {% for organisation in tags[tag]["organisations"]|sort(attribute='name') %}
       <li>
         <a href="{{organisation["path"]}}/" class="govuk-link govuk-body-l">{{organisation["name"]}}</a>
       </li>
