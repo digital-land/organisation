@@ -14,4 +14,4 @@ init::
 	python3 -m pip install -r requirements.txt
 
 clean:
-	rm -rf index.html ./development-corporation/ ./government-organisation/ ./local-authority-eng/ organisation.csv
+	rm -rf index.html ./development-corporation/ ./government-organisation/ ./local-authority-eng/ organisation.csv .cache
