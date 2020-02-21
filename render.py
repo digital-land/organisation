@@ -14,6 +14,7 @@ session = CacheControl(requests.session(), cache=FileCache(".cache"))
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
 organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
 docs = "docs/"
+today = datetime.utcnow().isoformat()[:10]
 
 
 def get(url):
@@ -37,7 +38,7 @@ def render(path, template, tags, organisation=None):
         os.makedirs(directory)
 
     with open(path, "w") as f:
-        f.write(template.render(tags=tags, organisation=organisation))
+        f.write(template.render(tags=tags, organisation=organisation, today=today))
 
 
 loader = jinja2.FileSystemLoader(searchpath="./templates")
