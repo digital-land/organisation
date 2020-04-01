@@ -74,4 +74,4 @@ d = {
     "councils": sorted(councils)
 }
 
-render("hubs.html", hub_template, d)
+render("hub.html", hub_template, d)
