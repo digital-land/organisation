@@ -59,7 +59,8 @@ def mapHubData(data):
 def getHubData():
     data = pd.read_csv("./data/hubs.csv", sep=",")
     json_data = json.loads(data.to_json(orient='records'))
-    return mapHubData(json_data)
+    councils = [x['local-authority-name'] for x in json_data]
+    return councils, mapHubData(json_data)
 
 
 loader = jinja2.FileSystemLoader(searchpath="./templates")
@@ -67,9 +68,10 @@ env = jinja2.Environment(loader=loader)
 hub_template = env.get_template("hub.html")
 
 # sort hub data by region
-data = getHubData()
+councils, data = getHubData()
 d = {
-    "hubs": sorted(data.items(), key=lambda x: x[1]['region'])
+    "hubs": sorted(data.items(), key=lambda x: x[1]['region']),
+    "councils": sorted(councils)
 }
 
 render("hubs.html", hub_template, d)

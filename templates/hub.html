@@ -1,5 +1,10 @@
 {% extends "dlf-base.html" %}
 
+{% block head %}
+{{ super() }}
+<link rel="stylesheet" href="https://digital-land-design.herokuapp.com/static/stylesheets/vendor/govuk-accessible-autocomplete.min.css" />
+{% endblock  %}
+
 {% block beforeContent %}
   {{ govukPhaseBanner({
     "classes": "govuk-width-container",
@@ -38,20 +43,35 @@
 </div>
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-        <p class="govuk-body-l">On this page you will be able to find which of the {{ data.hubs|length }} Hubs a Council is part of.</p>
+        <p class="govuk-body-l">On this page you will be able to find which of the {{ data.hubs|length }} Hubs a Local Authority is part of.</p>
     </div>
 </div>
 
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <div class="govuk-form-group">
+      <label class="govuk-label" for="council-search">
+        Search for a Local Authority
+      </label>
+      <select class="govuk-select" id="council-search" name="council-search">
+        {% for council in data.councils %}
+        <option value="{{ council }}">{{ council }}</option>
+        {% endfor %}
+      </select>
+    </div>
+  </div>
+</div>
+
+<hr class="govuk-section-break hub-list__separator govuk-section-break--visible">
 
 {% for hub in data.hubs %}
-<div class="govuk-grid-row">
+<div id="hub{{ loop.index }}" class="govuk-grid-row" data-councils="{{ hub[1]['local-authority']|join(',')}}">
     <div class="govuk-grid-column-full">
       <span class="govuk-caption-l">Hub</span>
       <h2 class="govuk-heading-l">{{ hub[0] }}</h2>
     </div>
     <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body-l govuk-!-font-weight-bold">Councils in the hub:</p>
+      <p class="govuk-body-l govuk-!-font-weight-bold">Local Authorities in the hub:</p>
       <ul class="govuk-list">
         {% for la in hub[1]['local-authority'] %}
         <li>{{ la }}</li>
@@ -65,7 +85,26 @@
       <h3 class="govuk-heading-s">{{ hub[1]['region'] }}</h3>
     </div>
 </div>
-<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+<hr class="govuk-section-break hub-list__separator govuk-section-break--visible">
 {% endfor %}
 
+{% endblock %}
+
+{% block bodyEnd %}
+{{ super() }}
+<script src="https://digital-land-design.herokuapp.com/static/javascripts/vendor/govuk-accessible-autocomplete.min.js"></script>
+<script>
+  function handleCouncilSelected(v) {
+    var hubEl = document.querySelector("[data-councils*='"+ v +"']");
+    window.location.href = "#" + hubEl.id;
+  }
+
+
+  accessibleAutocomplete.enhanceSelectElement({
+    defaultValue: '',
+    confirmOnBlur: false,
+    selectElement: document.querySelector('#council-search'),
+    onConfirm: handleCouncilSelected
+  });
+</script>
 {% endblock %}
