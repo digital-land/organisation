@@ -70,7 +70,7 @@ hub_template = env.get_template("hub.html")
 # sort hub data by region
 councils, data = getHubData()
 d = {
-    "hubs": sorted(data.items(), key=lambda x: x[1]['region']),
+    "hubs": sorted(data.items(), key=lambda x: (x[1]['region'], x[0])),
     "councils": sorted(councils)
 }
 
