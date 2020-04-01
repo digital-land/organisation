@@ -1,5 +1,7 @@
 {% extends "dlf-base.html" %}
 
+{% set htmlClasses = "smooth-scroll-enabled" %}
+
 {% block head %}
 {{ super() }}
 <link rel="stylesheet" href="https://digital-land-design.herokuapp.com/static/stylesheets/vendor/govuk-accessible-autocomplete.min.css" />
@@ -47,7 +49,7 @@
     </div>
 </div>
 
-<div class="govuk-grid-row">
+<div class="govuk-grid-row hide-if-no-js">
   <div class="govuk-grid-column-two-thirds">
     <div class="govuk-form-group">
       <label class="govuk-label" for="council-search">
@@ -71,10 +73,10 @@
       <h2 class="govuk-heading-l">{{ hub[0] }}</h2>
     </div>
     <div class="govuk-grid-column-two-thirds">
-      <p class="govuk-body-l govuk-!-font-weight-bold">Local Authorities in the hub:</p>
-      <ul class="govuk-list">
+      <p class="govuk-body govuk-!-font-weight-bold">Local Authorities in the hub:</p>
+      <ul class="govuk-list hub__la-list">
         {% for la in hub[1]['local-authority'] %}
-        <li>{{ la }}</li>
+        <li><span data-council="{{la}}">{{ la }}</span></li>
         {% endfor %}
       </ul>
     </div>
@@ -94,9 +96,15 @@
 {{ super() }}
 <script src="https://digital-land-design.herokuapp.com/static/javascripts/vendor/govuk-accessible-autocomplete.min.js"></script>
 <script>
+  const las = document.querySelectorAll(".hub__la-list li span");
   function handleCouncilSelected(v) {
     var hubEl = document.querySelector("[data-councils*='"+ v +"']");
     window.location.href = "#" + hubEl.id;
+    las.forEach(function(la) {
+      la.classList.remove('found');
+    });
+    const new_la = document.querySelector("[data-council='"+ v +"']");
+    new_la.classList.add('found');
   }
 
 
