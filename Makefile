@@ -6,6 +6,7 @@ all:	render
 
 render:
 	python3 render.py
+	python3 render_hub_page.py
 
 black:
 	black .
