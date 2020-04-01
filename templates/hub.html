@@ -1,0 +1,71 @@
+{% extends "dlf-base.html" %}
+
+{% block beforeContent %}
+  {{ govukPhaseBanner({
+    "classes": "govuk-width-container",
+    "tag": {
+      "text": "prototype"
+    },
+    "html": 'This is a prototype. Please provide feedback to the Digital Land team.'
+  }) }}
+
+  {{ govukBreadcrumbs({
+    "items": [
+      {
+        "text": "Digital Land",
+        "href": "https://digital-land.github.io/"
+      },
+      {
+        "text": "Organisations",
+        "href": "https://digital-land.github.io/organisation/"
+      },
+      {
+        "text": "Hubs"
+      }
+    ]
+  }) }}
+
+{% endblock %}
+
+{% block pageTitle %}Hubs | Organisations | Digital Land{% endblock %}
+
+{% block content %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+        <span class="govuk-caption-xl">Organisations</span>
+        <h1 class="govuk-heading-xl">Find your hub</h1>
+    </div>
+</div>
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+        <p class="govuk-body-l">On this page you will be able to find which of the {{ data.hubs|length }} Hubs a Council is part of.</p>
+    </div>
+</div>
+
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+
+{% for hub in data.hubs %}
+<div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      <span class="govuk-caption-l">Hub</span>
+      <h2 class="govuk-heading-l">{{ hub[0] }}</h2>
+    </div>
+    <div class="govuk-grid-column-two-thirds">
+      <p class="govuk-body-l govuk-!-font-weight-bold">Councils in the hub:</p>
+      <ul class="govuk-list">
+        {% for la in hub[1]['local-authority'] %}
+        <li>{{ la }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="govuk-grid-column-one-third">
+      <span class="govuk-caption-m">Local Resilience Forum</span>
+      <h3 class="govuk-heading-s">{{ hub[1]['lrf'] }}</h3>
+      <span class="govuk-caption-m">Region</span>
+      <h3 class="govuk-heading-s">{{ hub[1]['region'] }}</h3>
+    </div>
+</div>
+<hr class="govuk-section-break govuk-section-break--xl govuk-section-break--visible">
+{% endfor %}
+
+{% endblock %}
