@@ -3,35 +3,35 @@ name: Build organisation pages
 on:
   push:
     paths-ignore:
-      - "docs/**"
+      - 'docs/**'
     branches:
       - master
   schedule:
     - cron: '0 6 * * *'
 
+env:
+  GITHUB_ACTOR_EMAIL: ${{ secrets.GITHUB_ACTOR_EMAIL }}
+  GITHUB_ACTOR_TOKEN: ${{ secrets.GITHUB_ACTOR_TOKEN }}
+  GITHUB_ACTOR_USERNAME: ${{ secrets.GITHUB_ACTOR_USERNAME }}
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v1
-    - name: Install Python 3.7
-      uses: actions/setup-python@v1
+    - uses: actions/checkout@v2
+    - uses: actions/setup-python@v1
       with:
-        python-version: 3.7
-    - name: Install dependencies
-      run: make init
-    - name: Run make
-      run: make
-    - name: Commit files
-      env:
-        GITHUB_ACTOR_EMAIL: ${{ secrets.GITHUB_ACTOR_EMAIL }}
-        GITHUB_ACTOR_TOKEN: ${{ secrets.GITHUB_ACTOR_TOKEN }}
-        GITHUB_ACTOR_USERNAME: ${{ secrets.GITHUB_ACTOR_USERNAME }}
+        python-version: 3.8
+    - name: Setup git
       run: |
         git config user.email "${GITHUB_ACTOR_EMAIL}"
         git config user.name "${GITHUB_ACTOR_USERNAME}"
         git remote set-url origin https://${GITHUB_ACTOR_USERNAME}:${GITHUB_ACTOR_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
         git checkout master
-        git add .
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Rebuild organisation pages on $(date +%F)"; git push origin master)
+    - name: Install dependencies
+      run: make init
+    - name: Run make
+      run: make
+    - name: Commit files
+      git add docs
+      git diff --quiet && git diff --staged --quiet || (git commit -m "Build organisation pages on $(date +%F)"; git push origin master)
