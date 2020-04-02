@@ -78,7 +78,7 @@
     <p class="govuk-body govuk-!-font-weight-bold">Local Authorities in the hub:</p>
     <ul class="govuk-list hub__la-list">
       {% for la in hub[1]['local-authority'] %}
-      <li><span data-council="{{la}}">{{ la }}</span></li>
+      <li><a href="{{ la[1]|org_url }}" data-council="{{la[0]}}">{{ la[0] }}</a></li>
       {% endfor %}
     </ul>
   </div>

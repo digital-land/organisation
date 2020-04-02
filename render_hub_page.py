@@ -44,7 +44,7 @@ def getHubs(data):
 
 def mapAHub(hub, data):
     return {
-        'local-authority': [x['local-authority-name'] for x in data if x['hub'] == hub],
+        'local-authority': [(x['local-authority-name'], x['organisation']) for x in data if x['hub'] == hub],
         'lrf': list(set([x['lrf-area'] for x in data if x['hub'] == hub]))[0],
         'region': list(set([x['region'] for x in data if x['hub'] == hub]))[0],
         'id': list(set([x['hub_id'] for x in data if x['hub'] == hub]))[0]
@@ -92,8 +92,17 @@ def getHubData():
     return councils, mapHubData(json_data)
 
 
+# filter for converting local-authority-eng:HCK -> local-authority-eng/HCK
+def make_org_url(org_id):
+    url_base = '/organisation/'
+    if org_id is not None:
+        return url_base + org_id.replace(":", "/")
+    return org_id
+
+
 loader = jinja2.FileSystemLoader(searchpath="./templates")
 env = jinja2.Environment(loader=loader)
+env.filters['org_url'] = make_org_url
 hub_template = env.get_template("hub.html")
 
 
