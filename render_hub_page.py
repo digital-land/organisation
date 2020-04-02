@@ -85,11 +85,15 @@ def getHubData():
     councils = [x['local-authority-name'] for x in json_data]
 
     # get hub identifiers
+    # current psds hub.csv
     hId = pd.read_csv(hub_csv, sep=",")
     jhId = json.loads(hId.to_json(orient='records'))
     add_hub_identifiers(json_data, jhId)
 
-    return councils, mapHubData(json_data)
+    # combine local authorities and hubs
+    orgs = list(set([x['name'] for x in jhId] + councils))
+
+    return orgs, mapHubData(json_data)
 
 
 # filter for converting local-authority-eng:HCK -> local-authority-eng/HCK

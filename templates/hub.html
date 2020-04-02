@@ -69,16 +69,16 @@
 <hr class="govuk-section-break hub-list__separator govuk-section-break--visible">
 
 {% for hub in data.hubs %}
-<div id="{% if hub[1].id %}{{hub[1].id|urlencode}}{% else %}hub{{loop.index}}{% endif %}" class="govuk-grid-row hub" data-councils="{{ hub[1]['local-authority']|join(',')}}">
+<div id="{% if hub[1].id %}{{hub[1].id|urlencode}}{% else %}hub{{loop.index}}{% endif %}" class="govuk-grid-row hub" data-org-names="{{ hub[1]['local-authority']|join(',')}},{{hub[0]}}">
   <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Hub</span>
-    <h2 class="govuk-heading-l">{{ hub[0] }}</h2>
+    <h2 class="govuk-heading-l" data-org-name="{{ hub[0] }}">{{ hub[0] }}</h2>
   </div>
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body govuk-!-font-weight-bold">Local Authorities in the hub:</p>
     <ul class="govuk-list hub__la-list">
       {% for la in hub[1]['local-authority'] %}
-      <li><a href="{{ la[1]|org_url }}" data-council="{{la[0]}}">{{ la[0] }}</a></li>
+      <li><a href="{{ la[1]|org_url }}" data-org-name="{{la[0]}}">{{ la[0] }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -100,12 +100,12 @@
 <script>
   const las = document.querySelectorAll(".hub__la-list li span");
   function handleCouncilSelected(v) {
-    var hubEl = document.querySelector("[data-councils*='"+ v +"']");
+    var hubEl = document.querySelector("[data-org-names*='"+ v +"']");
     window.location.href = "#" + hubEl.id;
     las.forEach(function(la) {
       la.classList.remove('found');
     });
-    const new_la = document.querySelector("[data-council='"+ v +"']");
+    const new_la = document.querySelector("[data-org-name='"+ v +"']");
     new_la.classList.add('found');
   }
 
