@@ -33,5 +33,6 @@ jobs:
     - name: Run make
       run: make
     - name: Commit files
-      git add docs
-      git diff --quiet && git diff --staged --quiet || (git commit -m "Build organisation pages on $(date +%F)"; git push origin master)
+      run: |
+        git add docs
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Build organisation pages on $(date +%F)"; git push origin master)
