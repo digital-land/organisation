@@ -3,6 +3,9 @@
 {% block head %}
 {{ super() }}
 <link rel="stylesheet" href="https://digital-land-design.herokuapp.com/static/stylesheets/vendor/govuk-accessible-autocomplete.min.css" />
+{% if redirect_page %}
+<meta http-equiv="refresh" content="url=https://digital-land.github.io/organisation/shielding-hub" />
+{% endif %}
 {% endblock  %}
 
 {% block beforeContent %}

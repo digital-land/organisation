@@ -29,14 +29,14 @@ def date_text(d):
         return None
 
 
-def render(path, template, data):
+def render(path, template, data, redirect=False):
     path = os.path.join(docs, path)
     directory = os.path.dirname(path)
     if not os.path.exists(directory):
         os.makedirs(directory)
 
     with open(path, "w") as f:
-        f.write(template.render(data=data, today=today))
+        f.write(template.render(data=data, today=today, redirect_page=redirect))
 
 
 def getHubs(data):
@@ -123,4 +123,5 @@ d = {
     "councils": sorted(orgs)
 }
 
-render("hub.html", hub_template, d)
+render("hub.html", hub_template, d, True)
+render("shielding-hub.html", hub_template, d, True)
