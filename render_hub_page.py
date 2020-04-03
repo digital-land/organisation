@@ -39,15 +39,15 @@ def render(path, template, data):
 
 
 def getHubs(data):
-    hubs = [x['hub'] for x in data]
+    hubs = [x['informal-hub-name'] for x in data]
     return set(hubs)
 
 def mapAHub(hub, data):
     return {
-        'local-authority': [(x['local-authority-name'], x['organisation']) for x in data if x['hub'] == hub],
-        'lrf': list(set([x['lrf-area'] for x in data if x['hub'] == hub]))[0],
-        'region': list(set([x['region'] for x in data if x['hub'] == hub]))[0],
-        'id': list(set([x['hub_id'] for x in data if x['hub'] == hub]))[0]
+        'local-authority': [(x['local-authority-name'], x['organisation']) for x in data if x['informal-hub-name'] == hub],
+        'lrf': list(set([x['lrf-area'] for x in data if x['informal-hub-name'] == hub]))[0],
+        'region': list(set([x['region'] for x in data if x['informal-hub-name'] == hub]))[0],
+        'id': list(set([x['hub'] for x in data if x['informal-hub-name'] == hub]))[0]
     }
 
 def mapHubData(data):
@@ -58,40 +58,17 @@ def mapHubData(data):
     return mapped
 
 
-def add_hub_identifiers(data, hub_ids):
-    no_match = []
-    ids = {x['name']: x['hub'] for x in hub_ids}
-
-    for row in data:
-        if row['hub'] in ids.keys():
-            row['hub_id'] = ids[row['hub']]
-        else:
-            row['hub_id'] = ""
-            no_match.append(row["hub"])
-
-    # from Rishi list not matched           
-    # print('\n'.join(sorted(list(set(no_match)))))
-    # print("====================")
-    # from psd list not matched
-    names = {hub:name for name,hub in ids.items()}
-    matched_names = [names[x['hub_id']] for x in data if x['hub_id'] is not '']
-    hub_csv_not_matched = [hub['name'] for hub in hub_ids if hub['name'] not in list(set(matched_names))]
-    # print('\n'.join(hub_csv_not_matched))
-
-
 def getHubData():
     data = pd.read_csv("./data/hubs.csv", sep=",")
     json_data = json.loads(data.to_json(orient='records'))
     councils = [x['local-authority-name'] for x in json_data]
 
     # get hub identifiers
-    # current psds hub.csv
-    hId = pd.read_csv(hub_csv, sep=",")
+    hId = pd.read_csv("./data/hubs.v2.csv", sep=",")
     jhId = json.loads(hId.to_json(orient='records'))
-    add_hub_identifiers(json_data, jhId)
 
     # combine local authorities and hubs
-    orgs = list(set([x['name'] for x in jhId] + councils))
+    orgs = list(set([x['informal-name'] for x in jhId] + councils))
 
     return orgs, mapHubData(json_data)
 

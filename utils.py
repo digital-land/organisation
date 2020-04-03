@@ -34,10 +34,13 @@ def json_to_csv_file(output_file, data):
 def join_col(d1, idx_d2, k, col):
     for row in d1:
         if row[k] is not None:
-            if idx_d2[row[k]] is not None:
+            #print("Record: ", idx_d2[row[k]])
+            if idx_d2.get(row[k]) is not None:
                 row[col] = idx_d2[row[k]][col]
             else:
                 print("no match for ", row[k])
+                row[col] = None
+            #print(row)
     return d1
 
 
@@ -56,13 +59,18 @@ def joiner(d1, d2, k, cols):
 
 # test by calling something like 
 def testjoiner(cols):
-    d1 = pd.read_csv("./data/hubsv2.csv", sep=",")
+    d1 = pd.read_csv("./data/hubs.csv", sep=",")
     jd1 = json.loads(d1.to_json(orient='records'))
 
-    organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
-    d2 = pd.read_csv(organisation_csv, sep=",")
+    # organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
+    # d2 = pd.read_csv(organisation_csv, sep=",")
+    # jd2 = json.loads(d2.to_json(orient='records'))
+    d2 = pd.read_csv("./data/hubsv2.csv", sep=",")
     jd2 = json.loads(d2.to_json(orient='records'))
 
-    new_data = joiner(jd1, jd2, 'organisation', cols)
+    new_data = joiner(jd1, jd2, 'informal-name', cols)
     # print sample record
     print(new_data[3])
+
+    # save to csv
+    # json_to_csv_file('data/rishi_data.csv', new_data)
