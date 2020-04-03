@@ -148,11 +148,12 @@ Brighton & Hove City Council,brighton-&-hove-city-council,Brighton & Hove City C
 Bedford Borough Council,bedford-borough-council,Bedford Borough Council,Bedfordshire & Luton,East of England,local-authority-eng:BDF
 Central Bedfordshire Council,central-bedfordshire-council,Central Bedfordshire Council,Bedfordshire & Luton,East of England,local-authority-eng:CBF
 Luton Borough Council,luton-borough-council,Luton Borough Council,Bedfordshire & Luton,East of England,local-authority-eng:LUT
-Cambridge,cambridgeshire-county-council,Cambridgeshire County Council & Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:CAB
-East Cambridgeshire,cambridgeshire-county-council,Cambridgeshire County Council & Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:ECA
-Fenland,cambridgeshire-county-council,Cambridgeshire County Council & Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:FEN
-Huntingdonshire,cambridgeshire-county-council,Cambridgeshire County Council & Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:HUN
-South Cambridgeshire,cambridgeshire-county-council,Cambridgeshire County Council & Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:SCA
+Cambridge,cambridgeshire-county-council,Cambridgeshire County Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:CAB
+East Cambridgeshire,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:ECA
+Fenland,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:FEN
+Huntingdonshire,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:HUN
+South Cambridgeshire,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:SCA
+Peterborough City Council,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:PTE
 Basildon,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BAI
 Braintree,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BRA
 Brentwood,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BRW'

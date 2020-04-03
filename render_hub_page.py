@@ -8,6 +8,7 @@ from datetime import datetime
 
 import pandas as pd
 
+from utils import joiner
 
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
 organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
@@ -64,11 +65,15 @@ def getHubData():
     councils = [x['local-authority-name'] for x in json_data]
 
     # get hub identifiers
-    hId = pd.read_csv("./data/hubs.v2.csv", sep=",")
-    jhId = json.loads(hId.to_json(orient='records'))
+    hub_pd = pd.read_csv("./data/hubs.v2.csv", sep=",")
+    hub_json = json.loads(hub_pd.to_json(orient='records'))
+
+    # get data from master organisation.csv
+    org_pd = pd.read_csv(organisation_csv, sep=",")
+    org_data = json.loads(org_pd.to_json(orient='records'))
 
     # combine local authorities and hubs
-    orgs = list(set([x['informal-name'] for x in jhId] + councils))
+    orgs = list(set([x['informal-name'] for x in hub_json] + councils))
 
     return orgs, mapHubData(json_data)
 
