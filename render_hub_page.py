@@ -59,7 +59,7 @@ def mapHubData(data):
 
 
 def getHubData():
-    data = pd.read_csv("./data/hubs.csv", sep=",")
+    data = pd.read_csv("./data/las_in_hubs.csv", sep=",")
     json_data = json.loads(data.to_json(orient='records'))
     councils = [x['local-authority-name'] for x in json_data]
 
