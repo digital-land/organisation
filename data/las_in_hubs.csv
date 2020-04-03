@@ -51,7 +51,7 @@ Cornwall Council,cornwall-council,Cornwall Council,"Devon, Cornwall & Isle of Sc
 "Bournemouth, Christchurch & Poole Council",bcp,"Bournemouth, Christchurch & Poole Council",Dorset,South West,local-authority-eng:BPC
 Dorset Council,dorset,Dorset Council,Dorset,South West,local-authority-eng:DST
 Cheltenham,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West,local-authority-eng:CHT
-Cotswold,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West,local-authority-eng:COT'
+Cotswold,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West,local-authority-eng:COT
 Forest of Dean,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West,local-authority-eng:FOE
 Gloucester,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West,local-authority-eng:GLO
 Stroud,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West,local-authority-eng:STO
@@ -99,7 +99,7 @@ Gosport,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wi
 Hart,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:HAT
 Havant,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:HAA
 New Forest,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:NEW
-Rushmoor,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:RUH'
+Rushmoor,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:RUH
 Test Valley,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:TES
 Winchester,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East,local-authority-eng:WIN
 Isle of Wight Council,isle-of-wight-council,Isle of Wight Council,Hampshire & Isle of Wight,South East,local-authority-eng:IOW
@@ -138,7 +138,7 @@ Lewes,east-sussex-county-council,East Sussex County Council,Sussex,South East,lo
 Rother,east-sussex-county-council,East Sussex County Council,Sussex,South East,local-authority-eng:ROH
 Wealden,east-sussex-county-council,East Sussex County Council,Sussex,South East,local-authority-eng:WEA
 Adur,west-sussex-county-council,West Sussex County Council,Sussex,South East,local-authority-eng:ADU
-Arun,west-sussex-county-council,West Sussex County Council,Sussex,South East,local-authority-eng:ARU'
+Arun,west-sussex-county-council,West Sussex County Council,Sussex,South East,local-authority-eng:ARU
 Chichester,west-sussex-county-council,West Sussex County Council,Sussex,South East,local-authority-eng:CHI
 Crawley,west-sussex-county-council,West Sussex County Council,Sussex,South East,local-authority-eng:CRW
 Horsham,west-sussex-county-council,West Sussex County Council,Sussex,South East,local-authority-eng:HOR
@@ -156,7 +156,7 @@ South Cambridgeshire,peterborough-city-council,Peterborough City Council,Cambrid
 Peterborough City Council,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England,local-authority-eng:PTE
 Basildon,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BAI
 Braintree,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BRA
-Brentwood,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BRW'
+Brentwood,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:BRW
 Castle Point,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:CAS
 Chelmsford,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:CHL
 Colchester,essex-cc,Essex County Council,Essex,East of England,local-authority-eng:COL
