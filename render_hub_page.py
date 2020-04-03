@@ -40,29 +40,44 @@ def render(path, template, data):
 
 
 def getHubs(data):
-    hubs = [x['informal-hub-name'] for x in data]
+    hubs = [x['hub'] for x in data]
     return set(hubs)
 
-def mapAHub(hub, data):
-    return {
-        'local-authority': [(x['local-authority-name'], x['organisation']) for x in data if x['informal-hub-name'] == hub],
-        'lrf': list(set([x['lrf-area'] for x in data if x['informal-hub-name'] == hub]))[0],
-        'region': list(set([x['region'] for x in data if x['informal-hub-name'] == hub]))[0],
-        'id': list(set([x['hub'] for x in data if x['informal-hub-name'] == hub]))[0]
-    }
+def map_las_to_hub(hub, las):
+    #print([{'name': x['name'], 'informal-name': x['local-authority-name'], 'organisation': x['organisation']} for x in las if x['hub'] == hub['id']])
+    hub['local-authority'] = [{'name': x['name'], 'informal-name': x['local-authority-name'], 'organisation': x['organisation']} for x in las if x['hub'] == hub['id']]
+    hub['lrf'] = list(set([x['lrf-area'] for x in las if x['hub'] == hub['id']]))[0]
+    hub['region'] = list(set([x['region'] for x in las if x['hub'] == hub['id']]))[0]
+    return hub
 
-def mapHubData(data):
-    hubs = getHubs(data)
+def map_hub_to_identifier(hub_id, hub_data):
+    entries = [x for x in hub_data if x['hub'] == hub_id]
+    if len(entries) == 1:
+        return {
+            'name': entries[0]['name'],
+            'informal-name': [entries[0]['informal-name']],
+            'organisation': [entries[0]['organisation']]
+        }
+    else:
+        return {
+            'name': entries[0]['informal-name'],
+            'informal-name': [x['name'] for x in entries],
+            'organistion': [x['organisation'] for x in entries]
+        }
+
+def mapHubData(hubs, las):
+    hubs_ids = getHubs(hubs)
     mapped = {}
-    for hub in hubs:
-        mapped[hub] = mapAHub(hub, data)
+    for hub in hubs_ids:
+        mapped[hub] = map_hub_to_identifier(hub, hubs)
+        mapped[hub]['id'] = hub
+        mapped[hub] = map_las_to_hub(mapped[hub], las)
     return mapped
 
 
 def getHubData():
     data = pd.read_csv("./data/las_in_hubs.csv", sep=",")
-    json_data = json.loads(data.to_json(orient='records'))
-    councils = [x['local-authority-name'] for x in json_data]
+    las_in_hub_json = json.loads(data.to_json(orient='records'))
 
     # get hub identifiers
     hub_pd = pd.read_csv("./data/hubs.v2.csv", sep=",")
@@ -72,10 +87,12 @@ def getHubData():
     org_pd = pd.read_csv(organisation_csv, sep=",")
     org_data = json.loads(org_pd.to_json(orient='records'))
 
-    # combine local authorities and hubs
-    orgs = list(set([x['informal-name'] for x in hub_json] + councils))
+    # add official names to hub data
+    hub_json = joiner(hub_json, org_data, 'organisation', ['name'])
+    # add official names to la data
+    las_in_hub_json = joiner(las_in_hub_json, org_data, 'organisation', ['name'])
 
-    return orgs, mapHubData(json_data)
+    return mapHubData(hub_json, las_in_hub_json)
 
 
 # filter for converting local-authority-eng:HCK -> local-authority-eng/HCK
@@ -91,12 +108,19 @@ env = jinja2.Environment(loader=loader)
 env.filters['org_url'] = make_org_url
 hub_template = env.get_template("hub.html")
 
-
+# get hub data augmented with la data
+hub_data = getHubData()
+# get complete list of org names including informal versions
+orgs = set(
+    [hub_data[x]['name'] for x in hub_data] +
+    [y for x in hub_data for y in hub_data[x]['informal-name']] +
+    [y['name'] for x in hub_data for y in hub_data[x]['local-authority']] +
+    [y['informal-name'] for x in hub_data for y in hub_data[x]['local-authority']]
+)
 # sort hub data by region
-councils, data = getHubData()
 d = {
-    "hubs": sorted(data.items(), key=lambda x: (x[1]['region'], x[0])),
-    "councils": sorted(councils)
+    "hubs": sorted(hub_data.items(), key=lambda x: (x[1]['region'], x[0])),
+    "councils": sorted(orgs)
 }
 
 render("hub.html", hub_template, d)

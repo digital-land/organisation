@@ -69,16 +69,31 @@
 <hr class="govuk-section-break hub-list__separator govuk-section-break--visible">
 
 {% for hub in data.hubs %}
-<div id="{% if hub[1].id %}{{hub[1].id|urlencode}}{% else %}hub{{loop.index}}{% endif %}" class="govuk-grid-row hub" data-org-names="{{ hub[1]['local-authority']|join(',')}},{{hub[0]}}">
+{% set hl = namespace(la_str="") %}
+{% for la in hub[1]['local-authority'] %}
+  {% if la.name not in hl.la_str %}
+    {% set hl.la_str = hl.la_str + " " + la.name %}
+  {% endif %}
+  {% if la['informal-name'] not in hl.la_str %}
+    {% set hl.la_str = hl.la_str + " " + la['informal-name'] %}
+  {% endif %}
+{% endfor %}
+
+{% if hub[1]['informal-name']|length > 1 %}
+  {% set informal_hub_names = hub[1]['informal-name']|join(',') %}
+{% else %}
+  {% set informal_hub_names = hub[1]['informal-name'][0] %}
+{% endif %}
+<div id="{% if hub[1].id %}{{hub[1].id|urlencode}}{% else %}hub{{loop.index}}{% endif %}" class="govuk-grid-row hub" data-org-names="{{ hl.la_str }},{{hub[0]}}, {{hub[1].name}}, {{ informal_hub_names }}">
   <div class="govuk-grid-column-full">
     <span class="govuk-caption-l">Hub</span>
-    <h2 class="govuk-heading-l" data-org-name="{{ hub[0] }}">{{ hub[0] }}</h2>
+    <h2 class="govuk-heading-l" data-org-name="{{ hub[1].name }}, {{ informal_hub_names }}">{{ hub[1].name }}</h2>
   </div>
   <div class="govuk-grid-column-two-thirds">
     <p class="govuk-body govuk-!-font-weight-bold">Local Authorities in the hub:</p>
     <ul class="govuk-list hub__la-list">
       {% for la in hub[1]['local-authority'] %}
-      <li><a href="{{ la[1]|org_url }}" data-org-name="{{la[0]}}">{{ la[0] }}</a></li>
+      <li><a href="{{ la.organisation|org_url }}" data-org-name="{{la.name}}, {{la['informal-name']}}">{{ la.name }}</a></li>
       {% endfor %}
     </ul>
   </div>
@@ -101,11 +116,12 @@
   const las = document.querySelectorAll(".hub__la-list li span");
   function handleCouncilSelected(v) {
     var hubEl = document.querySelector("[data-org-names*='"+ v +"']");
+    
     window.location.href = "#" + hubEl.id;
     las.forEach(function(la) {
       la.classList.remove('found');
     });
-    const new_la = document.querySelector("[data-org-name='"+ v +"']");
+    const new_la = document.querySelector("[data-org-name*='"+ v +"']");
     new_la.classList.add('found');
   }
 
