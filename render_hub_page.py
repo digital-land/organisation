@@ -124,4 +124,4 @@ d = {
 }
 
 render("hub.html", hub_template, d, True)
-render("shielding-hub.html", hub_template, d, True)
+render("shielding-hub.html", hub_template, d, False)
