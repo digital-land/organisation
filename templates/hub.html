@@ -55,20 +55,25 @@
 
 <div class="govuk-grid-row hide-if-no-js">
   <div class="govuk-grid-column-two-thirds">
-    <div class="govuk-form-group">
-      <label class="govuk-label" for="council-search">
-        Search for a Local Authority
-      </label>
-      <select class="govuk-select" id="council-search" name="council-search">
-        <option value=""></option>
-        {% for council in data.councils %}
-        <option value="{{ council }}">{{ council }}</option>
-        {% endfor %}
-      </select>
-    </div>
-    <div class="govuk-form-group govuk-!-margin-bottom-9">
-      <button class="govuk-button dlf-filter-button">Find</button>
-    </div>
+    <form class="govuk-form">
+      <div class="govuk-form-group">
+        <label class="govuk-label" for="council-search">
+          Search for a Local Authority
+        </label>
+        <span id="council-search-error" class="govuk-error-message" role="alert">
+          <span class="govuk-visually-hidden">Error:</span> Value entered not recognised, please try again
+        </span>
+        <select class="govuk-select" id="council-search" name="council-search">
+          <option value=""></option>
+          {% for council in data.councils %}
+          <option value="{{ council }}">{{ council }}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="govuk-form-group govuk-!-margin-bottom-9">
+        <button class="govuk-button dlf-filter-button">Find</button>
+      </div>
+    </form>
   </div>
 </div>
 
@@ -120,22 +125,53 @@
 <script src="https://digital-land-design.herokuapp.com/static/javascripts/vendor/govuk-accessible-autocomplete.min.js"></script>
 <script>
   const las = document.querySelectorAll(".hub__la-list li span");
+
+  // set up select input
+  // Fully controled by JS so needs to handle errors
+  let select_el = document.querySelector('#council-search');
+  const select_options = select_el.querySelectorAll("option");
+  const select_options_list = [];
+  select_options.forEach(function(opt) {
+    if(opt.value !== "") {
+      select_options_list.push(opt.value);
+    }
+  })
+  const select_form_group = select_el.closest(".govuk-form-group");
+  const select_form = select_form_group.closest("form");
+  const select_button = select_form.querySelector("button");
+  const form_error_class = "govuk-form-group--error";
+  const input_error_class = "govuk-input--error";
+
   function handleCouncilSelected(v) {
-    var hubEl = document.querySelector("[data-org-names*='"+ v +"']");
+    if(select_options_list.indexOf(v) != -1) {
+      select_form_group.classList.remove(form_error_class);
+      select_el.classList.add(input_error_class);
+      var hubEl = document.querySelector("[data-org-names*='"+ v +"']");
     
-    window.location.href = "#" + hubEl.id;
-    las.forEach(function(la) {
-      la.classList.remove('found');
-    });
-    const new_la = document.querySelector("[data-org-name*='"+ v +"']");
-    new_la.classList.add('found');
+      window.location.href = "#" + hubEl.id;
+      las.forEach(function(la) {
+        la.classList.remove('found');
+      });
+      const new_la = document.querySelector("[data-org-name*='"+ v +"']");
+      new_la.classList.add('found');
+    } else {
+      select_form_group.classList.add(form_error_class);
+      select_el.classList.add(input_error_class);
+    }
   }
+
+  select_button.addEventListener('click', function(e) {
+    e.preventDefault();
+    // need to select element here because autocomplete plugin changes it
+    select_el = document.getElementById("council-search");
+    handleCouncilSelected(select_el.value);
+  });
 
 
   accessibleAutocomplete.enhanceSelectElement({
     defaultValue: '',
     confirmOnBlur: false,
-    selectElement: document.querySelector('#council-search'),
+    selectElement: select_el,
     onConfirm: handleCouncilSelected
   });
 </script>
