@@ -80,7 +80,7 @@ def getHubData():
     las_in_hub_json = json.loads(data.to_json(orient='records'))
 
     # get hub identifiers
-    hub_pd = pd.read_csv("./data/hubs.v2.csv", sep=",")
+    hub_pd = pd.read_csv(hub_csv, sep=",")
     hub_json = json.loads(hub_pd.to_json(orient='records'))
 
     # get data from master organisation.csv
