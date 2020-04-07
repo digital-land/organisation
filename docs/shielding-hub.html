@@ -100,7 +100,7 @@
 <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
         <span class="govuk-caption-xl">Organisations</span>
-        <h1 class="govuk-heading-xl">Find your hub</h1>
+        <h1 class="govuk-heading-xl" id="find-hub">Find your hub</h1>
     </div>
 </div>
 <div class="govuk-grid-row">
@@ -111,7 +111,7 @@
 
 <div class="govuk-grid-row hide-if-no-js">
   <div class="govuk-grid-column-two-thirds">
-    <form class="govuk-form">
+    <form class="govuk-form" id="la-search-form">
       <div class="govuk-form-group">
         <label class="govuk-label" for="council-search">
           Search for a Local Authority
@@ -7012,6 +7012,14 @@
 <hr class="govuk-section-break hub-list__separator govuk-section-break--visible">
 
 
+<div data-module="back-to-top">
+  <a class="govuk-link govuk-link--no-visited-state back-to-top__link" href="#find-hub">
+    <svg role="presentation" focusable="false" class="back-to-top__icon" xmlns="http://www.w3.org/2000/svg" width="13" height="17" viewBox="0 0 13 17">
+      <path fill="currentColor" d="M6.5 0L0 6.5 1.4 8l4-4v12.7h2V4l4.3 4L13 6.4z"></path>
+    </svg>Back to top
+  </a>
+</div>
+
 
         </main>
       </div>
@@ -7066,7 +7074,17 @@
 	// initiate all GOVUK components
 	window.GOVUKFrontend.initAll();
 </script>
+<script src="https://digital-land-design.herokuapp.com/static/javascripts/dl-frontend.js"></script>
 
+
+<script>
+  var $btt = document.querySelector('[data-module*="back-to-top"]')
+  new window.DLFrontend.BackToTop($btt).init({
+    footer_selector: ".govuk-footer",
+    head_selector: "#la-search-form",
+    classes: "back-to-top--banner"
+  });
+</script>
 <script src="https://digital-land-design.herokuapp.com/static/javascripts/vendor/govuk-accessible-autocomplete.min.js"></script>
 <script>
   const las = document.querySelectorAll(".hub__la-list li span");
