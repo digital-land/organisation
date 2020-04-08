@@ -47,6 +47,7 @@ def map_las_to_hub(hub, las):
     hub['local-authority'] = [{'name': x['name'], 'informal-name': x['informal-local-authority-name'], 'organisation': x['organisation']} for x in las if x['hub'] == hub['id']]
     hub['lrf'] = list(set([x['lrf-area'] for x in las if x['hub'] == hub['id']]))[0]
     hub['region'] = list(set([x['region'] for x in las if x['hub'] == hub['id']]))[0]
+    hub['local-authority'].sort(key=lambda x: x['name'])
     return hub
 
 def map_hub_to_identifier(hub_id, hub_data):
