@@ -3,6 +3,7 @@
 import os
 import json
 import csv
+import requests
 
 import pandas as pd
 
@@ -55,6 +56,15 @@ def joiner(d1, d2, k, cols):
             if col in d2[0].keys():
                 d1 = join_col(d1, d2_idx, k, col)
     return d1
+
+
+def fetch_json_from_endpoint(endpoint):
+    json_url = requests.get(endpoint)
+    return json_url.json()
+
+
+def name_to_identifier(n):
+    return n.lower().replace(" ", "-")
 
 
 # test by calling something like 
