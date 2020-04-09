@@ -88,3 +88,10 @@ def generate_la_to_lrf_lookup():
 
     # write to file
     json_to_csv_file("data/la_to_lrf_lookup.tmp.csv", lookup)
+    print("Temporary lookup file created: data/la_to_lrf_lookup.tmp.csv")
+
+
+# create LRF and Region CSVs
+generate_regions_csv()
+generate_lrf_csv()
+generate_la_to_lrf_lookup()
