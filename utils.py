@@ -39,7 +39,7 @@ def join_col(d1, idx_d2, k, col):
             if idx_d2.get(row[k]) is not None:
                 row[col] = idx_d2[row[k]][col]
             else:
-                print("no match for ", row[k])
+                print(f"no match for '{k}'", row[k])
                 row[col] = None
             #print(row)
     return d1
