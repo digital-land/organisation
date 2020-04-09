@@ -3,7 +3,7 @@
 import os
 import json
 import pandas as pd
-from utils import joiner, fetch_json_from_endpoint, json_to_csv_file, name_to_identifier
+from utils import joiner, fetch_json_from_endpoint, json_to_csv_file, name_to_identifier, get_csv_as_json
 
 
 regions_ep = "https://opendata.arcgis.com/datasets/18b9e771acb84451a64d3bcdb3f3145c_0.geojson"
@@ -62,11 +62,6 @@ def collect_la_to_lrf():
     d = fetch_json_from_endpoint(la_to_lrf_ep)
     #return [{'statistical-geography': r['properties']['LAD19CD'], 'lrf': r['properties']['LRF19CD'] } for r in d['features'] if r['properties']['LRF19CD'].startswith('E48')]
     return [{'la-statistical-geography': r['properties']['LAD19CD'], 'lrf-statistical-geography': r['properties']['LRF19CD'] } for r in d['features'] if r['properties']['LRF19CD'].startswith('E48')]
-
-
-def get_csv_as_json(path_to_csv):
-    csv_pd = pd.read_csv(path_to_csv, sep=",")
-    return json.loads(csv_pd .to_json(orient='records'))
 
 
 def generate_la_to_lrf_lookup():

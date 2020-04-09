@@ -8,6 +8,11 @@ import requests
 import pandas as pd
 
 
+def get_csv_as_json(path_to_csv):
+    csv_pd = pd.read_csv(path_to_csv, sep=",")
+    return json.loads(csv_pd .to_json(orient='records'))
+
+
 # write json to csv file
 def json_to_csv_file(output_file, data):
     # now we will open a file for writing 
