@@ -60,7 +60,6 @@ def generate_lrf_csv():
 
 def collect_la_to_lrf():
     d = fetch_json_from_endpoint(la_to_lrf_ep)
-    #return [{'statistical-geography': r['properties']['LAD19CD'], 'lrf': r['properties']['LRF19CD'] } for r in d['features'] if r['properties']['LRF19CD'].startswith('E48')]
     return [{'la-statistical-geography': r['properties']['LAD19CD'], 'lrf-statistical-geography': r['properties']['LRF19CD'] } for r in d['features'] if r['properties']['LRF19CD'].startswith('E48')]
 
 
@@ -89,6 +88,28 @@ def generate_la_to_lrf_lookup():
     # write to file
     json_to_csv_file("data/la_to_lrf_lookup.tmp.csv", lookup)
     print("Temporary lookup file created: data/la_to_lrf_lookup.tmp.csv")
+
+
+def generate_la_to_region_lookup():
+    lahubs = get_csv_as_json("data/las_in_hubs.csv")
+    las_regions = [{'organisation': x['organisation'], 'name': x['region'], 'hub': x['hub']} for x in lahubs]
+    regions = get_csv_as_json("data/region.csv")
+    lookup = joiner(las_regions, regions, 'name', ['region'])
+
+    h = get_csv_as_json("data/hubs.v2.csv")
+    hub_lookup = [{'hub':x['hub'], 'region':x['region']} for x in lookup]
+    # index by organistion
+    lookup = {x['organisation']:x['region'] for x in lookup}
+    hub_lookup = joiner(hub_lookup, h, 'hub', ['organisation'])
+    hub_lookup = {x['organisation']:x['region'] for x in hub_lookup}
+    
+    lookup.update(hub_lookup)
+    # back to record style dict
+    lookup = [{'organisation': k, 'region': v} for k,v in lookup.items()]
+    # write to file
+    json_to_csv_file("data/la_to_region_lookup.tmp.csv", lookup)
+    print("Temporary lookup file created: data/la_to_region_lookup.tmp.csv")
+    
 
 
 # create LRF and Region CSVs
