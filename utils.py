@@ -64,7 +64,7 @@ def fetch_json_from_endpoint(endpoint):
 
 
 def name_to_identifier(n):
-    return n.lower().replace(" ", "-")
+    return n.lower().replace(" ", "-").replace(",", "")
 
 
 # test by calling something like 
