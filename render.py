@@ -9,6 +9,8 @@ from cachecontrol import CacheControl
 from cachecontrol.caches.file_cache import FileCache
 from datetime import datetime
 
+from utils import get_csv_as_json
+
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
@@ -41,6 +43,20 @@ def render(path, template, tags, organisation=None):
         f.write(template.render(tags=tags, organisation=organisation, today=today))
 
 
+def add_lrf(o):
+    # need LA to LRF lookup table
+    lookup = get_csv_as_json("data/la_to_lrf_lookup.csv")
+    lookup_dict = {x['organisation']:x['lrf'] for x in lookup}
+    o['lrf'] = lookup_dict.get(o['organisation'], "")
+    # need LRF csv
+    lrfs = get_csv_as_json("data/lrf.csv")
+    lrfs_dict = {x['lrf']: x for x in lrfs}
+    o['lrf-name'] = ""
+    if o['lrf'] != "":
+        o['lrf-name'] = lrfs_dict.get(o['lrf'])['name']
+    return o
+
+
 loader = jinja2.FileSystemLoader(searchpath="./templates")
 env = jinja2.Environment(loader=loader)
 index_template = env.get_template("index.html")
@@ -68,6 +84,9 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
 for tag in tags:
     for o in tags[tag]["organisations"]:
         o["path"] = "/".join(o["path-segments"])
+        # if local authority add LRF
+        if tag == "local-authority-eng":
+            o = add_lrf(o)
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
 with open("docs/index.html", "w") as f:

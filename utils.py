@@ -3,8 +3,14 @@
 import os
 import json
 import csv
+import requests
 
 import pandas as pd
+
+
+def get_csv_as_json(path_to_csv):
+    csv_pd = pd.read_csv(path_to_csv, sep=",")
+    return json.loads(csv_pd .to_json(orient='records'))
 
 
 # write json to csv file
@@ -38,7 +44,7 @@ def join_col(d1, idx_d2, k, col):
             if idx_d2.get(row[k]) is not None:
                 row[col] = idx_d2[row[k]][col]
             else:
-                print("no match for ", row[k])
+                print(f"no match for '{k}'", row[k])
                 row[col] = None
             #print(row)
     return d1
@@ -55,6 +61,15 @@ def joiner(d1, d2, k, cols):
             if col in d2[0].keys():
                 d1 = join_col(d1, d2_idx, k, col)
     return d1
+
+
+def fetch_json_from_endpoint(endpoint):
+    json_url = requests.get(endpoint)
+    return json_url.json()
+
+
+def name_to_identifier(n):
+    return n.lower().replace(" ", "-").replace(",", "")
 
 
 # test by calling something like 
