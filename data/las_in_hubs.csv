@@ -1,5 +1,5 @@
 organisation,informal-local-authority-name,hub,informal-hub-name,lrf-area,region
-local-authority-eng:YOR,City of York Council,city-of-york-council,City of York Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:YOR,City of York Council,city-of-york-council,City of York Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:WYR,Wyre,lancashire-county-council,Lancashire County Council,Lancashire,North West
 local-authority-eng:WYO,Wycombe District Council,buckinghamshire-county-council,Buckinghamshire County Council,Thames Valley,South East
 local-authority-eng:WYE,Wyre Forest,redditch-borough-council-and-bromsgrove-district-council,Redditch Borough Council & Bromsgrove Council,West Mercia,West Midlands
@@ -20,7 +20,7 @@ local-authority-eng:WLV,City of Wolverhampton Council,wolverhampton,City of Wolv
 local-authority-eng:WLL,Walsall Metropolitan Borough Council,walsall,Walsall Metropolitan Borough Council,West Midlands,West Midlands
 local-authority-eng:WLI,West Lindsey,lincolnshire-county-council,Lincolnshire County Council,Lincolnshire,East Midlands
 local-authority-eng:WLA,West Lancashire,lancashire-county-council,Lancashire County Council,Lancashire,North West
-local-authority-eng:WKF,Wakefield Metropolitan District Council,wakefield-council,Wakefield Metropolitan District Council,West Yorkshire,Yorkshire and Humber
+local-authority-eng:WKF,Wakefield Metropolitan District Council,wakefield-council,Wakefield Metropolitan District Council,West Yorkshire,Yorkshire and The Humber
 local-authority-eng:WIN,Winchester,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East
 local-authority-eng:WIL,Wiltshire Council,wiltshire-council,Wiltshire Council,Wiltshire and Swindon LRF,South West
 local-authority-eng:WGN,Wigan Metropolitan Borough Council,salford,Salford City Council,Greater Manchester,North West
@@ -57,9 +57,9 @@ local-authority-eng:SWL,Swale,kent-county-council,Kent County Council,Kent,South
 local-authority-eng:SWK,London Borough of Southwark,london-borough-of-southwark,London Borough of Southwark,London,London
 local-authority-eng:SWD,Swindon Borough Council,swindon-borough-council,Swindon Borough Council,Wiltshire and Swindon LRF,South West
 local-authority-eng:SUR,Surrey Heath,surrey-county-council,Surrey County Council,Surrey,South East
-local-authority-eng:STY,South Tyneside Council,south-tyneside-council,South Tyneside Council,Northumbria,Northeast
+local-authority-eng:STY,South Tyneside Council,south-tyneside-council,South Tyneside Council,Northumbria,North East
 local-authority-eng:STV,Stevenage,hertfordshire-county-council,Hertfordshire County Council,Hertfordshire,East of England
-local-authority-eng:STT,Stockton-on-Tees Borough Council,stockton-council,Stockton-on-Tees Borough Council,Cleveland,Northeast
+local-authority-eng:STT,Stockton-on-Tees Borough Council,stockton-council,Stockton-on-Tees Borough Council,Cleveland,North East
 local-authority-eng:STR,Stratford-on-Avon,warwickshire-county-council,Warwickshire County Council,Warwickshire,West Midlands
 local-authority-eng:STO,Stroud,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West
 local-authority-eng:STN,London Borough of Sutton,london-borough-of-sutton,London Borough of Sutton,London,London
@@ -76,7 +76,7 @@ local-authority-eng:SOS,Southend-on-Sea Borough Council,south-end-on-sea,Southen
 local-authority-eng:SOL,Solihull Metropolitan Borough Council,solihull-mbc,Solihull Metropolitan Borough Council,West Midlands,West Midlands
 local-authority-eng:SNR,South Northamptonshire,northamptonshire-county-council,Northamptonshire County Council,Northamptonshire,East Midlands
 local-authority-eng:SNO,South Norfolk,norfolk-county-council,Norfolk County Council,Norfolk,East of England
-local-authority-eng:SND,Sunderland City Council,sunderland-council,Sunderland City Council,Northumbria,Northeast
+local-authority-eng:SND,Sunderland City Council,sunderland-council,Sunderland City Council,Northumbria,North East
 local-authority-eng:SLG,Slough Borough Council,slough,Slough Borough Council,Thames Valley,South East
 local-authority-eng:SLA,South Lakeland,cumbria-county-council,Cumbria County Council,Cumbria,North West
 local-authority-eng:SKP,Stockport Metropolitan Borough Council,salford,Salford City Council,Greater Manchester,North West
@@ -84,38 +84,38 @@ local-authority-eng:SKE,South Kesteven,lincolnshire-county-council,Lincolnshire 
 local-authority-eng:SHR,Shropshire Council,redditch-borough-council-and-bromsgrove-district-council,Redditch Borough Council & Bromsgrove Council,West Mercia,West Midlands
 local-authority-eng:SHO,South Holland,lincolnshire-county-council,Lincolnshire County Council,Lincolnshire,East Midlands
 local-authority-eng:SHN,St Helens Council,st-helens,St Helens Council,Merseyside,North West
-local-authority-eng:SHF,Sheffield City Council,sheffield-city-council,Sheffield City Council,South Yorkshire,Yorkshire and Humber
+local-authority-eng:SHF,Sheffield City Council,sheffield-city-council,Sheffield City Council,South Yorkshire,Yorkshire and The Humber
 local-authority-eng:SHE,Shepway,kent-county-council,Kent County Council,Kent,South East
 local-authority-eng:SHA,South Hams,devon-county-council,Devon County Council,"Devon, Cornwall & Isle of Scilly",South West
 local-authority-eng:SGC,South Gloucestershire Council,south-gloucestershire-council,South Gloucestershire Council,Avon & Somerset,South West
 local-authority-eng:SFT,Sefton Metropolitan Borough Council,liverpool,Liverpool City Council,Merseyside,North West
 local-authority-eng:SEV,Sevenoaks,kent-county-council,Kent County Council,Kent,South East
-local-authority-eng:SEL,Selby District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:SEL,Selby District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:SEG,Sedgemoor,somerset-county-council,Somerset County Council,Avon & Somerset,South West
 local-authority-eng:SDE,South Derbyshire,derbyshire-county-council,Derbyshire County Council,Derbyshire,East Midlands
-local-authority-eng:SCE,Scarborough Borough Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:SCE,Scarborough Borough Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:SCA,South Cambridgeshire,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England
 local-authority-eng:SBU,South Bucks District Council,buckinghamshire-county-council,Buckinghamshire County Council,Thames Valley,South East
 local-authority-eng:SAW,Sandwell Metropolitan Borough Council,sandwell-mbc,Sandwell Metropolitan Borough Council,West Midlands,West Midlands
 local-authority-eng:SAL,St Albans,hertfordshire-county-council,Hertfordshire County Council,Hertfordshire,East of England
-local-authority-eng:RYE,Ryedale District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:RYE,Ryedale District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:RUT,Rutland County Council,rutland-county-council,Rutland County Council,Leicestershire,East Midlands
 local-authority-eng:RUS,Rushcliffe,nottinghamshire-county-council,Nottinghamshire County Council,Northamptonshire,East Midlands
 local-authority-eng:RUN,Runnymede,surrey-county-council,Surrey County Council,Surrey,South East
 local-authority-eng:RUH,Rushmoor,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East
 local-authority-eng:RUG,Rugby,warwickshire-county-council,Warwickshire County Council,Warwickshire,West Midlands
-local-authority-eng:ROT,Rotherham Metropolitan Borough Council,rotherham-rmbc,Rotherham Metropolitan Borough Council,South Yorkshire,Yorkshire and Humber
+local-authority-eng:ROT,Rotherham Metropolitan Borough Council,rotherham-rmbc,Rotherham Metropolitan Borough Council,South Yorkshire,Yorkshire and The Humber
 local-authority-eng:ROS,Rossendale,lancashire-county-council,Lancashire County Council,Lancashire,North West
 local-authority-eng:ROH,Rother,east-sussex-county-council,East Sussex County Council,Sussex,South East
 local-authority-eng:ROC,Rochford,essex-cc,Essex County Council,Essex,East of England
-local-authority-eng:RIH,Richmondshire District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:RIH,Richmondshire District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:RIC,London Borough of Richmond upon Thames,london-borough-of-richmond-upon-thames,London Borough of Richmond upon Thames,London,London
 local-authority-eng:RIB,Ribble Valley,lancashire-county-council,Lancashire County Council,Lancashire,North West
 local-authority-eng:REI,Reigate and Banstead,surrey-county-council,Surrey County Council,Surrey,South East
 local-authority-eng:RDG,Reading Borough Council,reading-borough-council,Reading Borough Council,Thames Valley,South East
 local-authority-eng:RDB,London Borough of Redbridge,london-borough-of-redbridge,London Borough of Redbridge,London,London
 local-authority-eng:RCH,Rochdale Metropolitan Borough Council,salford,Salford City Council,Greater Manchester,North West
-local-authority-eng:RCC,Redcar & Cleveland Council,redcar-and-cleveland,Redcar & Cleveland Council,Cleveland,Northeast
+local-authority-eng:RCC,Redcar & Cleveland Council,redcar-and-cleveland,Redcar & Cleveland Council,Cleveland,North East
 local-authority-eng:PTE,Peterborough City Council,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England
 local-authority-eng:PRE,Preston,lancashire-county-council,Lancashire County Council,Lancashire,North West
 local-authority-eng:POR,Portsmouth City Council,portsmouth-city-council,Portsmouth City Council,Hampshire & Isle of Wight,South East
@@ -128,23 +128,23 @@ local-authority-eng:NWM,London Borough of Newham,london-borough-of-newham,London
 local-authority-eng:NWL,North West Leicestershire,leicestershire-county-council,Leicestershire County Council,Leicestershire,East Midlands
 local-authority-eng:NWA,North Warwickshire,warwickshire-county-council,Warwickshire County Council,Warwickshire,West Midlands
 local-authority-eng:NUN,Nuneaton and Bedworth,warwickshire-county-council,Warwickshire County Council,Warwickshire,West Midlands
-local-authority-eng:NTY,North Tyneside Council,north-tyneside-council,North Tyneside Council,Northumbria,Northeast
+local-authority-eng:NTY,North Tyneside Council,north-tyneside-council,North Tyneside Council,Northumbria,North East
 local-authority-eng:NSM,North Somerset Council,north-somerset-council,North Somerset Council,Avon & Somerset,South West
 local-authority-eng:NOW,Norwich,norfolk-county-council,Norfolk County Council,Norfolk,East of England
 local-authority-eng:NOR,Northampton,northamptonshire-county-council,Northamptonshire County Council,Northamptonshire,East Midlands
 local-authority-eng:NNO,North Norfolk,norfolk-county-council,Norfolk County Council,Norfolk,East of England
-local-authority-eng:NLN,North Lincolnshire Council,hull-city-council,Hull City Council,Humber,Yorkshire and Humber
+local-authority-eng:NLN,North Lincolnshire Council,hull-city-council,Hull City Council,Humber,Yorkshire and The Humber
 local-authority-eng:NKE,North Kesteven,lincolnshire-county-council,Lincolnshire County Council,Lincolnshire,East Midlands
 local-authority-eng:NHE,North Hertfordshire,hertfordshire-county-council,Hertfordshire County Council,Hertfordshire,East of England
 local-authority-eng:NGM,Nottingham City Council,nottingham-city-council,Nottingham City Council,Northamptonshire,East Midlands
 local-authority-eng:NEW,New Forest,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East
-local-authority-eng:NET,Newcastle City Council,newcastle,Newcastle City Council,Northumbria,Northeast
-local-authority-eng:NEL,North East Lincolnshire Council,hull-city-council,Hull City Council,Humber,Yorkshire and Humber
+local-authority-eng:NET,Newcastle City Council,newcastle,Newcastle City Council,Northumbria,North East
+local-authority-eng:NEL,North East Lincolnshire Council,hull-city-council,Hull City Council,Humber,Yorkshire and The Humber
 local-authority-eng:NED,North East Derbyshire,derbyshire-county-council,Derbyshire County Council,Derbyshire,East Midlands
 local-authority-eng:NEC,Newcastle-under-Lyme,staffordshire-county-council,Staffordshire County Council,Staffordshire,West Midlands
 local-authority-eng:NEA,Newark and Sherwood,nottinghamshire-county-council,Nottinghamshire County Council,Northamptonshire,East Midlands
 local-authority-eng:NDE,North Devon,devon-county-council,Devon County Council,"Devon, Cornwall & Isle of Scilly",South West
-local-authority-eng:NBL,Northumberland County Council,northumberland,Northumberland County Council,Northumbria,Northeast
+local-authority-eng:NBL,Northumberland County Council,northumberland,Northumberland County Council,Northumbria,North East
 local-authority-eng:MSU,Mid Suffolk,suffolk-county-council,Suffolk County Council,Suffolk,East of England
 local-authority-eng:MSS,Mid Sussex,west-sussex-county-council,West Sussex County Council,Sussex,South East
 local-authority-eng:MRT,London Borough of Merton,london-borough-of-merton,London Borough of Merton,London,London
@@ -154,7 +154,7 @@ local-authority-eng:MEN,Mendip,somerset-county-council,Somerset County Council,A
 local-authority-eng:MEL,Melton,leicestershire-county-council,Leicestershire County Council,Leicestershire,East Midlands
 local-authority-eng:MDW,Medway Council,medway-council,Medway Council,Kent,South East
 local-authority-eng:MDE,Mid Devon,devon-county-council,Devon County Council,"Devon, Cornwall & Isle of Scilly",South West
-local-authority-eng:MDB,Middlesbrough Council,middlesbrough,Middlesbrough Council,Cleveland,Northeast
+local-authority-eng:MDB,Middlesbrough Council,middlesbrough,Middlesbrough Council,Cleveland,North East
 local-authority-eng:MAV,Malvern Hills,redditch-borough-council-and-bromsgrove-district-council,Redditch Borough Council & Bromsgrove Council,West Mercia,West Midlands
 local-authority-eng:MAS,Mansfield,nottinghamshire-county-council,Nottinghamshire County Council,Northamptonshire,East Midlands
 local-authority-eng:MAN,Manchester City Council,salford,Salford City Council,Greater Manchester,North West
@@ -166,13 +166,13 @@ local-authority-eng:LIF,Lichfield,staffordshire-county-council,Staffordshire Cou
 local-authority-eng:LIC,Lincoln,lincolnshire-county-council,Lincolnshire County Council,Lincolnshire,East Midlands
 local-authority-eng:LEW,London Borough of Lewisham,london-borough-of-lewisham,London Borough of Lewisham,London,London
 local-authority-eng:LEE,Lewes,east-sussex-county-council,East Sussex County Council,Sussex,South East
-local-authority-eng:LDS,Leeds City Council,leeds-city-council,Leeds City Council,West Yorkshire,Yorkshire and Humber
+local-authority-eng:LDS,Leeds City Council,leeds-city-council,Leeds City Council,West Yorkshire,Yorkshire and The Humber
 local-authority-eng:LCE,Leicester City Council,leicester-city-council,Leicester City Council,Leicestershire,East Midlands
 local-authority-eng:LBH,London Borough of Lambeth,london-borough-of-lambeth,London Borough of Lambeth,London,London
 local-authority-eng:LAC,Lancaster,lancashire-county-council,Lancashire County Council,Lancashire,North West
 local-authority-eng:KWL,Knowsley Metropolitan Borough Council,knowsley,Knowsley Metropolitan Borough Council,Merseyside,North West
 local-authority-eng:KTT,Royal Borough of Kingston upon Thames,royal-borough-of-kingston-upon-thames,Royal Borough of Kingston upon Thames,London,London
-local-authority-eng:KIR,Kirklees Council,kirklees-council,Kirklees Council,West Yorkshire,Yorkshire and Humber
+local-authority-eng:KIR,Kirklees Council,kirklees-council,Kirklees Council,West Yorkshire,Yorkshire and The Humber
 local-authority-eng:KIN,King's Lynn and West Norfolk,norfolk-county-council,Norfolk County Council,Norfolk,East of England
 local-authority-eng:KET,Kettering,northamptonshire-county-council,Northamptonshire County Council,Northamptonshire,East Midlands
 local-authority-eng:KEC,Royal Borough of Kensington & Chelsea,royal-borough-of-kensington-&-chelsea,Royal Borough of Kensington & Chelsea,London,London
@@ -184,7 +184,7 @@ local-authority-eng:HYN,Hyndburn,lancashire-county-council,Lancashire County Cou
 local-authority-eng:HUN,Huntingdonshire,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England
 local-authority-eng:HRY,London Borough of Haringey,london-borough-of-haringey,London Borough of Haringey,London,London
 local-authority-eng:HRW,London Borough of Harrow,london-borough-of-harrow,London Borough of Harrow,London,London
-local-authority-eng:HPL,Hartlepool Borough Council,hartlepool-council,Hartlepool Borough Council,Cleveland,Northeast
+local-authority-eng:HPL,Hartlepool Borough Council,hartlepool-council,Hartlepool Borough Council,Cleveland,North East
 local-authority-eng:HOR,Horsham,west-sussex-county-council,West Sussex County Council,Sussex,South East
 local-authority-eng:HNS,London Borough of Hounslow,london-borough-of-hounslow,London Borough of Hounslow,London,London
 local-authority-eng:HMF,London Borough of Hammersmith & Fulham,london-borough-of-hammersmith-&-fulham,London Borough of Hammersmith & Fulham,London,London
@@ -200,8 +200,8 @@ local-authority-eng:HAS,Hastings,east-sussex-county-council,East Sussex County C
 local-authority-eng:HAR,Harlow,essex-cc,Essex County Council,Essex,East of England
 local-authority-eng:HAO,Harborough,leicestershire-county-council,Leicestershire County Council,Leicestershire,East Midlands
 local-authority-eng:HAL,Halton Borough Council,halton,Halton Borough Council,Cheshire,North West
-local-authority-eng:HAG,Harrogate Borough Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
-local-authority-eng:HAE,Hambleton District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:HAG,Harrogate Borough Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
+local-authority-eng:HAE,Hambleton District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:HAA,Havant,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East
 local-authority-eng:GRY,Great Yarmouth,norfolk-county-council,Norfolk County Council,Norfolk,East of England
 local-authority-eng:GRT,Guildford,surrey-county-council,Surrey County Council,Surrey,South East
@@ -210,7 +210,7 @@ local-authority-eng:GRA,Gravesham,kent-county-council,Kent County Council,Kent,S
 local-authority-eng:GOS,Gosport,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East
 local-authority-eng:GLO,Gloucester,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West
 local-authority-eng:GED,Gedling,nottinghamshire-county-council,Nottinghamshire County Council,Northamptonshire,East Midlands
-local-authority-eng:GAT,Gateshead Council,gateshead-council,Gateshead Council,Northumbria,Northeast
+local-authority-eng:GAT,Gateshead Council,gateshead-council,Gateshead Council,Northumbria,North East
 local-authority-eng:FYL,Fylde,lancashire-county-council,Lancashire County Council,Lancashire,North West
 local-authority-eng:FOE,Forest of Dean,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West
 local-authority-eng:FEN,Fenland,peterborough-city-council,Peterborough City Council,Cambridgeshire & Peterborough,East of England
@@ -218,7 +218,7 @@ local-authority-eng:FAR,Fareham,hampshire-county-council,Hampshire County Counci
 local-authority-eng:EXE,Exeter,devon-county-council,Devon County Council,"Devon, Cornwall & Isle of Scilly",South West
 local-authority-eng:EST,East Staffordshire,staffordshire-county-council,Staffordshire County Council,Staffordshire,West Midlands
 local-authority-eng:ESK,East Suffolk Council,suffolk-county-council,Suffolk County Council,Suffolk,East of England
-local-authority-eng:ERY,East Riding of Yorkshire Council,hull-city-council,Hull City Council,Humber,Yorkshire and Humber
+local-authority-eng:ERY,East Riding of Yorkshire Council,hull-city-council,Hull City Council,Humber,Yorkshire and The Humber
 local-authority-eng:ERE,Erewash,derbyshire-county-council,Derbyshire County Council,Derbyshire,East Midlands
 local-authority-eng:EPS,Epsom and Ewell,surrey-county-council,Surrey County Council,Surrey,South East
 local-authority-eng:EPP,Epping Forest,essex-cc,Essex County Council,Essex,East of England
@@ -234,20 +234,20 @@ local-authority-eng:ECA,East Cambridgeshire,peterborough-city-council,Peterborou
 local-authority-eng:EAT,Eastleigh,hampshire-county-council,Hampshire County Council,Hampshire & Isle of Wight,South East
 local-authority-eng:EAS,Eastbourne,east-sussex-county-council,East Sussex County Council,Sussex,South East
 local-authority-eng:EAL,London Borough of Ealing,london-borough-of-ealing,London Borough of Ealing,London,London
-local-authority-eng:DUR,Durham County Council,durham-county-council,Durham County Council,Durham & Darlington,Northeast
+local-authority-eng:DUR,Durham County Council,durham-county-council,Durham County Council,Durham & Darlington,North East
 local-authority-eng:DUD,Dudley Metropolitan Borough Council,dudley,Dudley Metropolitan Borough Council,West Midlands,West Midlands
 local-authority-eng:DST,Dorset Council,dorset,Dorset Council,Dorset,South West
 local-authority-eng:DOV,Dover,kent-county-council,Kent County Council,Kent,South East
-local-authority-eng:DNC,Doncaster Metropolitan Borough Council,doncaster-council,Doncaster Metropolitan Borough Council,South Yorkshire,Yorkshire and Humber
+local-authority-eng:DNC,Doncaster Metropolitan Borough Council,doncaster-council,Doncaster Metropolitan Borough Council,South Yorkshire,Yorkshire and The Humber
 local-authority-eng:DER,Derby City Council,derby-city-council,Derby City Council,Derbyshire,East Midlands
 local-authority-eng:DEB,Derbyshire Dales,derbyshire-county-council,Derbyshire County Council,Derbyshire,East Midlands
 local-authority-eng:DAV,Daventry,northamptonshire-county-council,Northamptonshire County Council,Northamptonshire,East Midlands
 local-authority-eng:DAR,Dartford,kent-county-council,Kent County Council,Kent,South East
-local-authority-eng:DAL,Darlington Borough Council,darlington-council,Darlington Borough Council,Durham & Darlington,Northeast
+local-authority-eng:DAL,Darlington Borough Council,darlington-council,Darlington Borough Council,Durham & Darlington,North East
 local-authority-eng:DAC,Dacorum,hertfordshire-county-council,Hertfordshire County Council,Hertfordshire,East of England
 local-authority-eng:CRY,London Borough of Croydon,london-borough-of-croydon,London Borough of Croydon,London,London
 local-authority-eng:CRW,Crawley,west-sussex-county-council,West Sussex County Council,Sussex,South East
-local-authority-eng:CRA,Craven District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and Humber
+local-authority-eng:CRA,Craven District Council,north-yorkshire-county-council,North Yorkshire County Council,North Yorkshire,Yorkshire and The Humber
 local-authority-eng:COV,Coventry City Council,coventry,Coventry City Council,West Midlands,West Midlands
 local-authority-eng:COT,Cotswold,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West
 local-authority-eng:COR,Corby,northamptonshire-county-council,Northamptonshire County Council,Northamptonshire,East Midlands
@@ -255,7 +255,7 @@ local-authority-eng:COP,Copeland,cumbria-county-council,Cumbria County Council,C
 local-authority-eng:CON,Cornwall Council,cornwall-council,Cornwall Council,"Devon, Cornwall & Isle of Scilly",South West
 local-authority-eng:COL,Colchester,essex-cc,Essex County Council,Essex,East of England
 local-authority-eng:CMD,London Borough of Camden,london-borough-of-camden,London Borough of Camden,London,London
-local-authority-eng:CLD,Calderdale Metropolitan Borough Council,calderdale-mbc,Calderdale Metropolitan Borough Council,West Yorkshire,Yorkshire and Humber
+local-authority-eng:CLD,Calderdale Metropolitan Borough Council,calderdale-mbc,Calderdale Metropolitan Borough Council,West Yorkshire,Yorkshire and The Humber
 local-authority-eng:CHW,Cheshire West and Chester Council,cheshire-west-and-chester-council,Cheshire West and Chester Council,Cheshire,North West
 local-authority-eng:CHT,Cheltenham,gloucestershire-county-council,Gloucestershire County Council,Gloucestershire,South West
 local-authority-eng:CHS,Chesterfield,derbyshire-county-council,Derbyshire County Council,Derbyshire,East Midlands
@@ -281,7 +281,7 @@ local-authority-eng:BRW,Brentwood,essex-cc,Essex County Council,Essex,East of En
 local-authority-eng:BRT,Broxtowe,nottinghamshire-county-council,Nottinghamshire County Council,Northamptonshire,East Midlands
 local-authority-eng:BRO,Broadland,norfolk-county-council,Norfolk County Council,Norfolk,East of England
 local-authority-eng:BRE,Breckland,norfolk-county-council,Norfolk County Council,Norfolk,East of England
-local-authority-eng:BRD,City of Bradford Metropolitan District Council,city-of-bradford,City of Bradford Metropolitan District Council,West Yorkshire,Yorkshire and Humber
+local-authority-eng:BRD,City of Bradford Metropolitan District Council,city-of-bradford,City of Bradford Metropolitan District Council,West Yorkshire,Yorkshire and The Humber
 local-authority-eng:BRC,Bracknell Forest Council,bracknell-forest,Bracknell Forest Council,Thames Valley,South East
 local-authority-eng:BRA,Braintree,essex-cc,Essex County Council,Essex,East of England
 local-authority-eng:BPL,Blackpool Council,blackpool,Blackpool Council,Cheshire,North West
@@ -289,7 +289,7 @@ local-authority-eng:BPC,"Bournemouth, Christchurch & Poole Council",bcp,"Bournem
 local-authority-eng:BOT,Boston,lincolnshire-county-council,Lincolnshire County Council,Lincolnshire,East Midlands
 local-authority-eng:BOS,Bolsover,derbyshire-county-council,Derbyshire County Council,Derbyshire,East Midlands
 local-authority-eng:BOL,Bolton Metropolitan Borough Council,salford,Salford City Council,Greater Manchester,North West
-local-authority-eng:BNS,Barnsley Metropolitan Borough Council,barnsley,Barnsley Metropolitan Borough Council,South Yorkshire,Yorkshire and Humber
+local-authority-eng:BNS,Barnsley Metropolitan Borough Council,barnsley,Barnsley Metropolitan Borough Council,South Yorkshire,Yorkshire and The Humber
 local-authority-eng:BNH,Brighton & Hove City Council,brighton-&-hove-city-council,Brighton & Hove City Council,Sussex,South East
 local-authority-eng:BNE,London Borough of Barnet,london-borough-of-barnet,London Borough of Barnet,London,London
 local-authority-eng:BLA,Blaby,leicestershire-county-council,Leicestershire County Council,Leicestershire,East Midlands
