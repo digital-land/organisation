@@ -43,32 +43,35 @@ def render(path, template, tags, organisation=None):
         f.write(template.render(tags=tags, organisation=organisation, today=today))
 
 
+def add_to_org_from_lookup(record, lookup, master, k, col):
+    # set identifier if exists in lookup
+    record[k] = lookup.get(record['organisation'], "")
+    # index master table by key
+    master_dict = {x[k]: x for x in master}
+    col_key = k + "-" + col
+    record[col_key] = ""
+    # add column if lookup entry existed
+    if record[k] != "":
+        record[col_key] = master_dict.get(record[k])[col]
+    return o
+
+
+# fetch LA to LRF lookup table
+la_to_lrf_lookup = get_csv_as_json("data/la_to_lrf_lookup.csv")
+la_to_lrf_lookup_dict = {x['organisation']:x['lrf'] for x in la_to_lrf_lookup}
+# fetch lrf master table
+lrfs = get_csv_as_json("data/lrf.csv")
 def add_lrf(o):
-    # need LA to LRF lookup table
-    lookup = get_csv_as_json("data/la_to_lrf_lookup.csv")
-    lookup_dict = {x['organisation']:x['lrf'] for x in lookup}
-    o['lrf'] = lookup_dict.get(o['organisation'], "")
-    # need LRF csv
-    lrfs = get_csv_as_json("data/lrf.csv")
-    lrfs_dict = {x['lrf']: x for x in lrfs}
-    o['lrf-name'] = ""
-    if o['lrf'] != "":
-        o['lrf-name'] = lrfs_dict.get(o['lrf'])['name']
-    return o
+    return add_to_org_from_lookup(o, la_to_lrf_lookup_dict, lrfs, 'lrf', 'name')
 
 
+# fetch LA to Region lookup table
+la_to_region_lookup = get_csv_as_json("data/la_to_region_lookup.csv")
+la_to_region_lookup_dict = {x['organisation']:x['region'] for x in la_to_region_lookup}
+# fetch region csv
+regions = get_csv_as_json("data/region.csv")
 def add_region(o):
-    # need LA to Region lookup table
-    lookup = get_csv_as_json("data/la_to_region_lookup.csv")
-    lookup_dict = {x['organisation']:x['region'] for x in lookup}
-    o['region'] = lookup_dict.get(o['organisation'], "")
-    # need region csv
-    regions = get_csv_as_json("data/region.csv")
-    regions_dict = {x['region']: x for x in regions}
-    o['region-name'] = ""
-    if o['region'] != "":
-        o['region-name'] = regions_dict.get(o['region'])['name']
-    return o
+    return add_to_org_from_lookup(o, la_to_region_lookup_dict, regions, 'region', 'name')
 
 
 loader = jinja2.FileSystemLoader(searchpath="./templates")
