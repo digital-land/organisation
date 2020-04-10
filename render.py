@@ -9,7 +9,7 @@ from cachecontrol import CacheControl
 from cachecontrol.caches.file_cache import FileCache
 from datetime import datetime
 
-from utils import get_csv_as_json
+from utils import get_csv_as_json, joiner
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
@@ -57,6 +57,20 @@ def add_lrf(o):
     return o
 
 
+def add_region(o):
+    # need LA to Region lookup table
+    lookup = get_csv_as_json("data/la_to_region_lookup.csv")
+    lookup_dict = {x['organisation']:x['region'] for x in lookup}
+    o['region'] = lookup_dict.get(o['organisation'], "")
+    # need region csv
+    regions = get_csv_as_json("data/region.csv")
+    regions_dict = {x['region']: x for x in regions}
+    o['region-name'] = ""
+    if o['region'] != "":
+        o['region-name'] = regions_dict.get(o['region'])['name']
+    return o
+
+
 loader = jinja2.FileSystemLoader(searchpath="./templates")
 env = jinja2.Environment(loader=loader)
 index_template = env.get_template("index.html")
@@ -87,6 +101,7 @@ for tag in tags:
         # if local authority add LRF
         if tag == "local-authority-eng":
             o = add_lrf(o)
+            o = add_region(o)
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
 with open("docs/index.html", "w") as f:
