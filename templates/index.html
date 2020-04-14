@@ -42,13 +42,18 @@
   </div>
 
   <div class="govuk-grid-column-two-thirds">
-    <ul class="govuk-list">
+    <ol class="org-list">
     {% for organisation in tags[tag]["organisations"]|sort(attribute='name') %}
-      <li>
-        <a href="{{organisation["path"]}}/" class="govuk-link govuk-body-l">{{organisation["name"]}}</a>
+      <li class="org-list__item">
+        <a href="{{organisation["path"]}}/" class="govuk-link org-list__item-title">{{organisation["name"]}}</a>
+        {% if organisation['end-date'] %}
+        <strong class="govuk-tag govuk-tag--grey">
+          Dissolved
+        </strong>
+        {% endif %}
       </li>
     {% endfor %}
-    </ul>
+    </ol>
   </div>
 </div>
 {% endfor %}
