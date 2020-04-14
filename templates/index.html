@@ -46,7 +46,7 @@
     {% for organisation in tags[tag]["organisations"]|sort(attribute='name') %}
       <li class="org-list__item">
         <a href="{{organisation["path"]}}/" class="govuk-link org-list__item-title">{{organisation["name"]}}</a>
-        {% if organisation['end-date'] %}
+        {% if organisation['end-date'] and organisation['end-date'] < today  %}
         <strong class="govuk-tag govuk-tag--grey">
           Dissolved
         </strong>

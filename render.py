@@ -108,4 +108,4 @@ for tag in tags:
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
 with open("docs/index.html", "w") as f:
-    f.write(index_template.render(tags=tags))
+    f.write(index_template.render(tags=tags, today=today))
