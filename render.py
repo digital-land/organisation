@@ -43,35 +43,27 @@ def render(path, template, tags, organisation=None):
         f.write(template.render(tags=tags, organisation=organisation, today=today))
 
 
-def add_to_org_from_lookup(record, lookup, master, k, col):
-    # set identifier if exists in lookup
-    record[k] = lookup.get(record['organisation'], "")
+def add_official_names(organisation, master, k):
     # index master table by key
     master_dict = {x[k]: x for x in master}
-    col_key = k + "-" + col
-    record[col_key] = ""
+    k_name = k + "-name"
+    organisation[k_name] = ""
     # add column if lookup entry existed
-    if record[k] != "":
-        record[col_key] = master_dict.get(record[k])[col]
-    return o
+    if organisation[k] != "":
+        organisation[k_name] = master_dict.get(organisation[k])["name"]
+    return organisation
 
 
-# fetch LA to LRF lookup table
-la_to_lrf_lookup = get_csv_as_json("data/la_to_lrf_lookup.csv")
-la_to_lrf_lookup_dict = {x['organisation']:x['lrf'] for x in la_to_lrf_lookup}
 # fetch lrf master table
 lrfs = get_csv_as_json("data/lrf.csv")
 def add_lrf(o):
-    return add_to_org_from_lookup(o, la_to_lrf_lookup_dict, lrfs, 'lrf', 'name')
+    return add_official_names(o, lrfs, 'lrf')
 
 
-# fetch LA to Region lookup table
-la_to_region_lookup = get_csv_as_json("data/la_to_region_lookup.csv")
-la_to_region_lookup_dict = {x['organisation']:x['region'] for x in la_to_region_lookup}
 # fetch region csv
 regions = get_csv_as_json("data/region.csv")
 def add_region(o):
-    return add_to_org_from_lookup(o, la_to_region_lookup_dict, regions, 'region', 'name')
+    return add_official_names(o, regions, 'region')
 
 
 loader = jinja2.FileSystemLoader(searchpath="./templates")
@@ -101,7 +93,7 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
 for tag in tags:
     for o in tags[tag]["organisations"]:
         o["path"] = "/".join(o["path-segments"])
-        # if local authority add LRF
+        # if local authority add region and LRF
         if tag == "local-authority-eng":
             o = add_lrf(o)
             o = add_region(o)
