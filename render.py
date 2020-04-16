@@ -15,6 +15,8 @@ session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
 organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
+region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/region.csv")
+lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/lrf.csv")
 docs = "docs/"
 today = datetime.utcnow().isoformat()[:10]
 
@@ -55,13 +57,13 @@ def add_official_names(organisation, master, k):
 
 
 # fetch lrf master table
-lrfs = get_csv_as_json("data/lrf.csv")
+lrfs = get_csv_as_json(lrf_csv)
 def add_lrf(o):
     return add_official_names(o, lrfs, 'lrf')
 
 
 # fetch region csv
-regions = get_csv_as_json("data/region.csv")
+regions = get_csv_as_json(region_csv)
 def add_region(o):
     return add_official_names(o, regions, 'region')
 
