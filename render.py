@@ -45,27 +45,16 @@ def render(path, template, tags, organisation=None):
         f.write(template.render(tags=tags, organisation=organisation, today=today))
 
 
-def add_official_names(organisation, master, k):
-    # index master table by key
-    master_dict = {x[k]: x for x in master}
-    k_name = k + "-name"
-    organisation[k_name] = ""
-    # add column if lookup entry existed
-    if organisation[k] != "":
-        organisation[k_name] = master_dict.get(organisation[k])["name"]
+def add_official_names(organisation, datasets):
+    for dataset in datasets:
+        # index table (dataset[1]) by key (dataset[0])
+        master_dict = {x[dataset[0]]: x for x in dataset[1]}
+        k_name = dataset[0] + "-name"
+        organisation[k_name] = ""
+        # add column if identifier present
+        if organisation[dataset[0]] != "":
+            organisation[k_name] = master_dict.get(organisation[dataset[0]])["name"]
     return organisation
-
-
-# fetch lrf master table
-lrfs = get_csv_as_json(lrf_csv)
-def add_lrf(o):
-    return add_official_names(o, lrfs, 'lrf')
-
-
-# fetch region csv
-regions = get_csv_as_json(region_csv)
-def add_region(o):
-    return add_official_names(o, regions, 'region')
 
 
 loader = jinja2.FileSystemLoader(searchpath="./templates")
@@ -73,11 +62,16 @@ env = jinja2.Environment(loader=loader)
 index_template = env.get_template("index.html")
 organisation_template = env.get_template("organisation.html")
 
+
+# fetch associated data
+lrfs = get_csv_as_json(lrf_csv)
+regions = get_csv_as_json(region_csv)
+
+
 tags = OrderedDict()
 for o in csv.DictReader(get(organisation_tag_csv).splitlines()):
     o["organisations"] = []
     tags[o["tag"]] = o
-
 
 for o in csv.DictReader(get(organisation_csv).splitlines()):
     o["path-segments"] = list(filter(None, o["organisation"].split(":")))
@@ -87,6 +81,10 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
     o["start-date-text"] = date_text(o["start-date"])
     o["end-date-text"] = date_text(o["end-date"])
 
+    # if local authority add region and LRF
+    if o["prefix"] == "local-authority-eng":
+         add_official_names(o, [('region', regions), ('lrf', lrfs)])
+
     o.setdefault("tags", [])
     o["tags"].append(prefix)
     tags[prefix]["organisations"].append(o)
@@ -95,10 +93,6 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
 for tag in tags:
     for o in tags[tag]["organisations"]:
         o["path"] = "/".join(o["path-segments"])
-        # if local authority add region and LRF
-        if tag == "local-authority-eng":
-            o = add_lrf(o)
-            o = add_region(o)
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
 with open("docs/index.html", "w") as f:
