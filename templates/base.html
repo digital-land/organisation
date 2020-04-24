@@ -52,7 +52,11 @@
     {% endblock %}
 
     {% block footer %}
-      {{ govukFooter({}) }}
+      {{ govukFooter({
+        "meta": {
+          "html": 'The <a href="https://github.com/digital-land/organisation-collection">organisation-collection</a> and <a href="https://github.com/digital-land/organisation">organisation</a> is <a href="https://github.com/digital-land/organisation/blob/master/LICENSE">open source</a>.'
+        }
+      }) }}
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
