@@ -79,7 +79,8 @@
       Local authority type
     </dt>
     <dd class="govuk-summary-list__value">
-      <a href="https://local-authority-type.register.gov.uk/record/{{organisation["local-authority-type"]}}">{{organisation["local-authority-type"]}}</a>
+      <a href="https://local-authority-type.register.gov.uk/record/{{organisation['local-authority-type']}}">{{organisation["local-authority-type"]}}</a>
+      ({{organisation['local-authority-type']|local_authority_type}})
     </dd>
   </div>
 {% endif %}

@@ -9,6 +9,7 @@ from cachecontrol import CacheControl
 from cachecontrol.caches.file_cache import FileCache
 from datetime import datetime
 
+from filters.local_authority_type import LocalAuthorityTypeMapping
 from utils import get_csv_as_json, joiner
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
@@ -57,8 +58,16 @@ def add_official_names(organisation, datasets):
     return organisation
 
 
+la_type_mapping = LocalAuthorityTypeMapping()
+def local_authority_type_filter(k):
+    if la_type_mapping.get_local_authority_type_name(k) is not None:
+        return la_type_mapping.get_local_authority_type_name(k)
+    return k
+
+
 loader = jinja2.FileSystemLoader(searchpath="./templates")
 env = jinja2.Environment(loader=loader)
+env.filters["local_authority_type"] = local_authority_type_filter
 index_template = env.get_template("index.html")
 organisation_template = env.get_template("organisation.html")
 
