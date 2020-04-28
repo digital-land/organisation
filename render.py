@@ -17,7 +17,7 @@ session = CacheControl(requests.session(), cache=FileCache(".cache"))
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
 organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
 region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/region.csv")
-lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/lrf.csv")
+lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/local-resilience-forum.csv")
 docs = "docs/"
 today = datetime.utcnow().isoformat()[:10]
 
@@ -90,9 +90,9 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
     o["start-date-text"] = date_text(o["start-date"])
     o["end-date-text"] = date_text(o["end-date"])
 
-    # if local authority add region and LRF
+    # if local authority add region and local resilience forum
     if o["prefix"] == "local-authority-eng":
-         add_official_names(o, [('region', regions), ('lrf', lrfs)])
+         add_official_names(o, [('region', regions), ('local-resilience-forum', lrfs)])
 
     o.setdefault("tags", [])
     o["tags"].append(prefix)
