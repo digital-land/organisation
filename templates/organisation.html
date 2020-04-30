@@ -174,7 +174,25 @@
 {% endif %}
 
   </dl>
-  </div>
+
+  {% if organisation["constituent-districts"] %} 
+    <div class="dlf-summary-card">
+      <div class="dlf-summary-card__header">
+        <div class="dlf-summary-card__title">Constituent districts</div>
+      </div>
+      <div class="dlf-summary-card__body">
+        <ul class="govuk-list">
+          {%- for org in organisation["constituent-districts"] -%}
+            <li><a class="govuk-link--no-underline" href="{{ org['organisation']|organisation_url }}">{{ org['name'] }}</a></li>
+          {%- endfor -%}
+        </ul>
+      </div>
+    </div>
+{% endif %}
+</div>
+
+
+
 </div>
 
 {% if organisation["statistical-geography"] or organisation["toid"] or organisation["census-area"] or organisation["opendatacommunities-area"] %}
