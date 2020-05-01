@@ -15,10 +15,10 @@ from utils import get_csv_as_json, joiner
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
-organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
-organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
-region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/region.csv")
-lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/local-resilience-forum.csv")
+organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
+organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/tag.csv")
+region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/region.csv")
+lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/local-resilience-forum.csv")
 docs = "docs/"
 today = datetime.utcnow().isoformat()[:10]
 
