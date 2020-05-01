@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/psd/openregister/blob/master/LICENSE)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://black.readthedocs.io/en/stable/)
 
-The list of organisations is taken from the [https://github.com/digital-land/organisation-collection](organisation-collection) repository.
+The list of organisations is taken from the [https://github.com/digital-land/organisation-dataset](organisation-dataset) repository.
 
 # Updating the pages
 
