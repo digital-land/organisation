@@ -10,9 +10,9 @@ import pandas as pd
 
 from utils import joiner
 
-organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/collection/organisation.csv")
-organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/tag.csv")
-hub_csv = "https://raw.githubusercontent.com/digital-land/organisation-collection/master/data/hub.csv"
+organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
+organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/tag.csv")
+hub_csv = "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/hub.csv"
 docs = "docs/"
 today = datetime.utcnow().isoformat()[:10]
 
