@@ -61,9 +61,12 @@ def add_official_names(organisation, datasets):
 
 def constituent_districts(organisations):
     constituent_lists = {}
-    combined_authorities = [x['organisation'] for x in organisations if x['local-authority-type'] == 'COMB']
-    for comb in combined_authorities:
-        constituent_lists[comb] = [{'organisation':x['organisation'],'name':x['name']} for x in organisations if x['combined-authority'] == comb]
+    combined_authorities = {x['organisation']:x['name'] for x in organisations if x['local-authority-type'] == 'COMB'}
+    for comb in combined_authorities.keys():
+        constituent_lists.setdefault(comb, {})
+        constituent_lists[comb]['name'] = combined_authorities[comb]
+        constituent_lists[comb]['organisation'] = comb
+        constituent_lists[comb]['constituents'] = [{'organisation':x['organisation'],'name':x['name']} for x in organisations if x['combined-authority'] == comb]
     return constituent_lists
 
 
@@ -113,8 +116,15 @@ combined_authority_lists = constituent_districts(tags['local-authority-eng']["or
 for tag in tags:
     for o in tags[tag]["organisations"]:
         o["path"] = "/".join(o["path-segments"])
-        if tag == 'local-authority-eng' and o.get('local-authority-type') == 'COMB':
-            o['constituent-districts'] = combined_authority_lists[o['organisation']]
+        if tag == 'local-authority-eng':
+            if o.get('local-authority-type') == 'COMB':
+                o['constituent-districts'] = combined_authority_lists[o['organisation']]['constituents']
+            if o['combined-authority']:
+                comb_id = o['combined-authority']
+                o['combined-authority'] = {
+                    'organisation': comb_id,
+                    'name': combined_authority_lists[comb_id]['name']
+                }
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
 with open("docs/index.html", "w") as f:
