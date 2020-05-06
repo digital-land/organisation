@@ -191,7 +191,7 @@
     </dt>
     <dd class="govuk-summary-list__value">
     <p><a href="{{organisation["opendatacommunities"]}}">{{organisation["opendatacommunities"]}}</a></p>
-    <input class="govuk-input copy-and-paste" type="text" value="{{organisation["opendatacommunities"]}}" readonly>
+    <input class="govuk-input copy-and-paste" type="text" value="{{organisation["opendatacommunities"]}}" readonly data-module="input-copy">
     <!-- see huffduffer.com for how @adactio does this beautifully -->
     <p></p>
     </dd>
@@ -362,4 +362,11 @@ ga('send', 'pageview');
   }
 </script>
 {%- endif -%}
+
+<script>
+  const $inputCopyElements = document.querySelectorAll('[data-module*="input-copy"]')
+  $inputCopyElements.forEach(function(el) {
+      new window.DLFrontend.InputCopy(el).init()
+  })
+</script>
 {% endblock %}
