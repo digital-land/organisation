@@ -207,7 +207,7 @@
     </dt>
     <dd class="govuk-summary-list__value">
     <p><a href="http://opendatacommunities.org/id/district-council/brentwood">http://opendatacommunities.org/id/district-council/brentwood</a></p>
-    <input class="govuk-input copy-and-paste" type="text" value="http://opendatacommunities.org/id/district-council/brentwood" readonly>
+    <input class="govuk-input copy-and-paste" type="text" value="http://opendatacommunities.org/id/district-council/brentwood" readonly data-module="input-copy">
     <!-- see huffduffer.com for how @adactio does this beautifully -->
     <p></p>
     </dd>
@@ -356,7 +356,10 @@
 	window.GOVUKFrontend.initAll();
 </script>
 <script src="https://digital-land-design.herokuapp.com/static/javascripts/dl-frontend.js"></script>
-
+<script>
+	// adds any necessary polyfills
+	window.DLFrontend.polyfill();
+</script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -408,6 +411,12 @@ ga('send', 'pageview');
         map.fitBounds(geoBoundaries.getBounds());
       });
   }
+</script><script>
+  const $inputCopyElements = document.querySelectorAll('[data-module*="input-copy"]')
+  $inputCopyElements.forEach(function(el) {
+      new window.DLFrontend.InputCopy(el).init()
+  })
 </script>
+
   </body>
 </html>
