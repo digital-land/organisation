@@ -52,11 +52,7 @@
     {% endblock %}
 
     {% block footer %}
-      {{ govukFooter({
-        "meta": {
-          "html": 'The software used to build the <a href="https://github.com/digital-land/organisation-dataset">organisation-dataset</a> and these <a href="https://github.com/digital-land/organisation">organisation</a> pages is <a href="https://github.com/digital-land/organisation/blob/master/LICENSE">open source</a>.'
-        }
-      }) }}
+      {{ govukFooter() }}
     {% endblock %}
 
     {% block bodyEnd %}{% endblock %}
