@@ -167,7 +167,7 @@
     </dt>
     <dd class="govuk-summary-list__value">
     <p><a href="http://opendatacommunities.org/id/dev-corp/london-legacy">http://opendatacommunities.org/id/dev-corp/london-legacy</a></p>
-    <input class="govuk-input copy-and-paste" type="text" value="http://opendatacommunities.org/id/dev-corp/london-legacy" readonly>
+    <input class="govuk-input copy-and-paste" type="text" value="http://opendatacommunities.org/id/dev-corp/london-legacy" readonly data-module="input-copy">
     <!-- see huffduffer.com for how @adactio does this beautifully -->
     <p></p>
     </dd>
@@ -280,7 +280,10 @@
 	window.GOVUKFrontend.initAll();
 </script>
 <script src="https://digital-land-design.herokuapp.com/static/javascripts/dl-frontend.js"></script>
-
+<script>
+	// adds any necessary polyfills
+	window.DLFrontend.polyfill();
+</script>
 
 <script type="application/javascript">
 var doNotTrack = false;
@@ -290,6 +293,12 @@ ga('create', 'UA-127566551-1', 'auto');
 ga('send', 'pageview');
 }
 </script>
-<script async src='https://www.google-analytics.com/analytics.js'></script>
+<script async src='https://www.google-analytics.com/analytics.js'></script><script>
+  const $inputCopyElements = document.querySelectorAll('[data-module*="input-copy"]')
+  $inputCopyElements.forEach(function(el) {
+      new window.DLFrontend.InputCopy(el).init()
+  })
+</script>
+
   </body>
 </html>
