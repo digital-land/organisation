@@ -83,26 +83,26 @@
       ({{organisation['local-authority-type']|local_authority_type}})
 
       {%- if organisation["constituent-districts"] -%} 
-      <div class="dlf-inset-card govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+      <div class="dlf-inset-card dlf-inset-card--s govuk-!-margin-top-3 govuk-!-margin-bottom-3">
         <div class="dlf-inset-card__header">
           <div class="dlf-inset-card__title">Constituent local authorities</div>
         </div>
         <div class="dlf-inset-card__body">
           <ul class="govuk-list">
             {%- for org in organisation["constituent-districts"] -%}
-              <li><a class="govuk-link--no-underline" href="{{ org['organisation']|organisation_url }}">{{ org['name'] }}</a></li>
+              <li><a class="govuk-link govuk-link--no-underline" href="{{ org['organisation']|organisation_url }}">{{ org['name'] }}</a></li>
             {%- endfor -%}
           </ul>
         </div>
       </div>
       {%- endif -%}
       {%- if organisation['combined-authority'] -%}
-      <div class="dlf-inset-card govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+      <div class="dlf-inset-card dlf-inset-card--s govuk-!-margin-top-3 govuk-!-margin-bottom-3">
         <div class="dlf-inset-card__header">
           <div class="dlf-inset-card__title">Member of combined authority</div>
         </div>
         <div class="dlf-inset-card__body">
-          <a class="govuk-link--no-underline" href="{{ organisation['combined-authority']['organisation']|organisation_url }}">{{ organisation['combined-authority']['name'] }}</a></li>
+          <a class="govuk-link govuk-link--no-underline" href="{{ organisation['combined-authority']['organisation']|organisation_url }}">{{ organisation['combined-authority']['name'] }}</a></li>
         </div>
       </div>
       {%- endif -%}
