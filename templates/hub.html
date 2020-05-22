@@ -70,9 +70,10 @@
           {% endfor %}
         </select>
       </div>
-      <div class="govuk-form-group govuk-!-margin-bottom-9">
+      <div class="govuk-form-group govuk-!-margin-bottom-1">
         <button class="govuk-button dlf-filter-button">Find</button>
       </div>
+      <p class="govuk-body govuk-!-font-size-16"><a href="#download">Download shielding hub data</a></p>
     </form>
   </div>
 </div>
@@ -121,14 +122,23 @@
 <div class="govuk-grid-row govuk-main-wrapper--l">
   <div class="govuk-grid-column-two-thirds">
     <h2 class="govuk-heading-l" id="download">Download the data</h2>
-    <p class="govuk-body">You can download the list of shielding hubs as:</p>
-    <ul class="govuk-list">
-      <li><a href="https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/hub.csv" download="hub.csv">CSV</a></li>
-    </ul>
-    <p class="govuk-body">You can download the list of shielding hubs with the member local authorities as:</p>
-    <ul class="govuk-list">
-      <li><a href="https://raw.githubusercontent.com/digital-land/organisation/master/data/las_in_hubs.csv" download="local_authorities_in_hub.csv">CSV</a></li>
-    </ul>
+    <p class="govuk-body">All the data on this page is available to download. There are 2 options available.</p>
+  </div>
+</div>
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    <a class="highlight-box govuk-!-margin-top-6" href="https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/hub.csv">
+      <h3 class="govuk-heading-m highlight-box__title govuk-!-margin-top-0">Shielding hubs</h3>
+      <p class="govuk-body govuk-!-margin-bottom-0">Get a copy of the shielding hub data in CSV format.</p>
+    </a>
+  </div>
+  <div class="govuk-grid-column-one-half">
+    <a class="highlight-box govuk-!-margin-top-6" href="https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/local-authority-to-hub.csv">
+      <h3 class="govuk-heading-m highlight-box__title govuk-!-margin-top-0">Local authorities in hubs</h3>
+      <p class="govuk-body govuk-!-margin-bottom-0">Get a copy of the local authortiy to shielding hub data in CSV format.</p>
+    </a>
   </div>
 </div>
 
@@ -140,6 +150,14 @@
   </a>
 </div>
 
+{% endblock %}
+
+{% block pageFeedback %}
+<div class="dlf-pg-feedback">
+	<div class="dlf-pg-feedback__prompt">
+	  <a href="mailto:digitalland@communities.gov.uk?subject=How to improve Shielding hub page" class="dlf-pg-feedback__link">How can we improve this page?</a>
+	</div>
+</div>
 {% endblock %}
 
 {% block bodyEnd %}

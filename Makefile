@@ -8,9 +8,6 @@ render:
 	python3 render.py
 	python3 render_hub_page.py
 
-collect:
-	python3 collection.py
-
 black:
 	black .
 
