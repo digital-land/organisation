@@ -11,3 +11,5 @@ local
 var
 tmp
 .cache
+
+.vscode
