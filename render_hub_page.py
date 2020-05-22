@@ -126,5 +126,6 @@ d = {
     "councils": sorted(orgs)
 }
 
+# we gave out /hub url but now redirect it to /shielding-hub
 render("hub.html", hub_template, d, True)
 render("shielding-hub.html", hub_template, d, False)
