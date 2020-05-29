@@ -82,7 +82,7 @@
       <a href="https://local-authority-type.register.gov.uk/record/{{organisation['local-authority-type']}}">{{organisation["local-authority-type"]}}</a>
       ({{organisation['local-authority-type']|local_authority_type}})
 
-      {%- if organisation["constituent-districts"] -%} 
+      {%- if organisation["constituent-districts"] -%}
       <div class="dlf-inset-card dlf-inset-card--s govuk-!-margin-top-3 govuk-!-margin-bottom-3">
         <div class="dlf-inset-card__header">
           <div class="dlf-inset-card__title">Constituent local authorities</div>
@@ -318,49 +318,7 @@ ga('send', 'pageview');
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
 {%- if organisation["boundary"] -%}
-<script>
-  const $mapElement = document.querySelector('[data-module="boundary-map"]');
-  const boundaryURL = '{{organisation["boundary"]}}';
-  if ($mapElement) {
-    // Tile layers
-    var tiles = L.tileLayer("https://tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png", {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    });
-
-    // govuk consistent colours
-    var colours = {
-      lightBlue: "#1d70b8",
-      darkBlue: "#003078",
-      brown: "#594d00",
-      yellow_brown: "#a0964e"
-    };
-  
-    var latLng = L.latLng(52.561928, -1.464854);
-    var map = L.map("map", {
-      center: latLng,
-      zoom: 5,
-      layers: [tiles]
-    });
-
-    var geoBoundaries;
-    fetch(boundaryURL)
-      .then((response) => {
-        return response.json();
-      })
-      .then((data) => {
-        geoBoundaries = L.geoJSON(data, {
-          style: {
-            fillOpacity: 0.2,
-            weight: 2,
-            color: colours.darkBlue,
-            fillColor: colours.lightBlue
-          }
-        }).addTo(map);
-        map.fitBounds(geoBoundaries.getBounds());
-      });
-  }
-</script>
+  {% include 'docs/' + organisation['organisation']|organisation_url + '/map.html'  %}
 {%- endif -%}
 
 <script>

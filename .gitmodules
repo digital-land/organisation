@@ -1,0 +1,3 @@
+[submodule "map-templates"]
+	path = map-templates
+	url = https://github.com/digital-land/map-templates.git

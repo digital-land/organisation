@@ -77,7 +77,7 @@ def local_authority_type_filter(k):
     return k
 
 
-loader = jinja2.FileSystemLoader(searchpath="./templates")
+loader = jinja2.FileSystemLoader(searchpath=["./templates", "./map-templates"])
 env = jinja2.Environment(loader=loader)
 env.filters["local_authority_type"] = local_authority_type_filter
 env.filters["organisation_url"] = organisation_url_filter
