@@ -12,6 +12,7 @@ black:
 	black .
 
 init::
+	git submodule update --init --recursive --remote
 	python3 -m pip install -r requirements.txt
 
 clean:
