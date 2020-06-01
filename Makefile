@@ -10,6 +10,9 @@ render:
 
 black:
 	black .
+	
+submodules:
+	git submodule update --init --remote
 
 init::
 	python3 -m pip install -r requirements.txt
