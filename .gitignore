@@ -13,3 +13,5 @@ tmp
 .cache
 
 .vscode
+
+node_modules
