@@ -44,7 +44,7 @@
       <div class="govuk-grid-column-two-thirds">
         <div class="cookie-banner__message">
           <h2 class="govuk-heading-m">Tell us whether you accept cookies</h2>
-          <p class="govuk-body">We use <a class="govuk-link" href="/cookies">cookies to collect information</a> about how you use GOV.UK. We use this information to make the website work as well as possible and improve government services.</p>
+          <p class="govuk-body">We use <a class="govuk-link" href="/cookies">cookies to collect information</a> about how you use the Digital Land website to make the website work as well as possible</p>
         </div>
         <div class="cooke-banner__buttons govuk-grid-row">
           <div class="govuk-grid-column-one-half">
@@ -408,70 +408,11 @@
 	// initiate all GOVUK components
 	window.GOVUKFrontend.initAll();
 </script>
+<script src="https://digital-land-design.herokuapp.com/static/javascripts/dl-cookies.js"></script>
 <script src="https://digital-land-design.herokuapp.com/static/javascripts/dl-frontend.js"></script>
 <script>
 	// adds any necessary polyfills
 	window.DLFrontend.polyfill();
-</script>
-<script type="application/javascript">
-
-    function setCookie(name,value,days) {
-        var expires = "";
-        if (days) {
-            var date = new Date();
-            date.setTime(date.getTime() + (days*24*60*60*1000));
-            expires = "; expires=" + date.toUTCString();
-        }
-        console.log("setting cookie" + name + "=" + (value || "")  + expires + "; path=/");
-        document.cookie = name + "=" + (value || "")  + expires + "; path=/";
-    }
-
-    function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-            var c = ca[i];
-            while (c.charAt(0)==' ') c = c.substring(1,c.length);
-            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-    }
-
-    function acceptCookies() {
-        setCookie("cookies_preferences_set",true,365);
-        setCookie("cookies_policy",JSON.stringify({"essential":true,"settings":true,"usage":true,"campaigns":true}),365);
-        hideCookieBanner();
-        showCookieConfirmation();
-        setTrackingCookies();
-    }
-
-    function hideCookieBanner() {
-        cookieBanner = document.getElementById("cookie-banner")
-        cookieBanner.style.display = "none";
-    }
-
-    function showCookieConfirmation() {
-        cookieBanner = document.getElementById("cookie-confirmation")
-        cookieBanner.style.display = "block";
-    }
-
-    function setTrackingCookies() {
-        cookiesPolicy = JSON.parse(getCookie("cookies_policy"))
-        var doNotTrack = cookiesPolicy == null || !cookiesPolicy.usage
-        if (doNotTrack) {
-            window['ga-disable-UA-127566551-1'] = true;
-        } else {
-            window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-            ga('create', 'UA-127566551-1', 'auto');
-            ga('send', 'pageview');
-        }
-    }
-
-    if (getCookie("cookies_preferences_set")) {
-        hideCookieBanner();
-    }
-
-    setTrackingCookies()
 </script>
 <script async src='https://www.google-analytics.com/analytics.js'></script>
 
