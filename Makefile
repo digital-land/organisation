@@ -11,10 +11,11 @@ render:
 black:
 	black .
 	
-submodules:
+submodules::
 	git submodule update --init --remote
+	git pull --recurse-submodules
 
-init::
+init:: submodules
 	python3 -m pip install -r requirements.txt
 
 clean:
