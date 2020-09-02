@@ -12,9 +12,9 @@ black:
 	black .
 	
 submodules::
-	git submodule update --init --remote --recursive
+	git submodule update --init --recursive --remote
 
-init::
+init::	submodules
 	python3 -m pip install -r requirements.txt
 
 clean:

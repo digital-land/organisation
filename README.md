@@ -10,7 +10,6 @@ The list of organisations is taken from the [https://github.com/digital-land/org
 We recommend working in [virtual environment](http://docs.python-guide.org/en/latest/dev/virtualenvs/) before installing the python dependencies:
 
     $ make init
-    $ make submodules
     $ make
 
 # Licence
