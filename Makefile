@@ -13,8 +13,9 @@ black:
 	
 submodules::
 	git submodule update --init --recursive --remote
+	git pull --recurse-submodules=on-demand
 
-init::	submodules
+init::
 	python3 -m pip install -r requirements.txt
 
 clean:
