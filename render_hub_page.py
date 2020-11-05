@@ -9,6 +9,7 @@ from datetime import datetime
 import pandas as pd
 
 from utils import joiner
+from bin.jinja_setup import setup_jinja
 
 # data endpoints
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
@@ -106,8 +107,8 @@ def make_org_url(org_id):
     return org_id
 
 
-loader = jinja2.FileSystemLoader(searchpath="./templates")
-env = jinja2.Environment(loader=loader)
+# set up jinja
+env = setup_jinja()
 env.filters['org_url'] = make_org_url
 hub_template = env.get_template("hub.html")
 

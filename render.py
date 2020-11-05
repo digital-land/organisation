@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
 import os
-import jinja2
 import csv
 from collections import OrderedDict
 import requests
@@ -12,6 +11,8 @@ from datetime import datetime
 from filters.local_authority_type import LocalAuthorityTypeMapping
 from filters.organisation_url import organisation_url_filter
 from utils import get_csv_as_json, joiner
+
+from bin.jinja_setup import setup_jinja
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
@@ -76,11 +77,12 @@ def local_authority_type_filter(k):
         return la_type_mapping.get_local_authority_type_name(k)
     return k
 
-
-loader = jinja2.FileSystemLoader(searchpath=["./templates", "./map-templates"])
-env = jinja2.Environment(loader=loader)
+# set up jinja
+env = setup_jinja()
+# register filters
 env.filters["local_authority_type"] = local_authority_type_filter
 env.filters["organisation_url"] = organisation_url_filter
+# get page templates
 index_template = env.get_template("index.html")
 organisation_template = env.get_template("organisation.html")
 
