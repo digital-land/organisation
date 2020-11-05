@@ -1,6 +1,29 @@
-{% extends "dlf-base.html" %}
+{% extends "digital-land-frontend/dlf-base.html" %}
 
 {% block pageTitle %}Organisations | Digital Land{% endblock %}
+
+{% block beforeContent %}
+	{{ govukPhaseBanner({
+		"classes": "govuk-width-container",
+		"tag": {
+			"text": "prototype"
+		},
+		"html": 'This is a prototype. Please provide feedback to the Digital Land team.'
+	}) }}
+
+	{{ govukBreadcrumbs({
+	  "items": [
+	    {
+	      "text": "Digital Land",
+	      "href": "https://digital-land.github.io/"
+	    },
+	    {
+	      "text": "Organisations"
+	    }
+	  ]
+	}) }}
+
+{% endblock %}
 
 {% block content %}
 <div class="govuk-grid-row">
