@@ -1,10 +1,6 @@
 {% extends "digital-land-frontend/dlf-base.html" %}
 {%- from "digital-land-frontend/components/map/macro.html" import dlMap %}
 
-{%- if organisation["boundary"] -%}
-  {% import 'docs/'+ organisation['organisation']|organisation_url +'/map.njk' as boundaryMap %}
-{%- endif -%}
-
 {% block head %}
 {%- if organisation["boundary"] -%}
 <!-- include css and js for LeafletJS -->
