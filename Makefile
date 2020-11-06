@@ -10,10 +10,6 @@ render:
 
 black:
 	black .
-	
-submodules::
-	git submodule update --init --recursive --remote
-	git pull --recurse-submodules=on-demand
 
 init::
 	python3 -m pip install -r requirements.txt
