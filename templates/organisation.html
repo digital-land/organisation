@@ -59,9 +59,9 @@
     <p class="govuk-body-l">
 {% if organisation["start-date"] or organisation["end-date"] %}
   This organisation was
-  {% if organisation["start-date"] %} established on the <time datetime="{{ organisation["start-date"] }}">{{ organisation["start-date-text"] }}</time>{% endif -%}
+  {% if organisation["start-date"] %} established on the <time datetime="{{ organisation['start-date'] }}">{{ organisation["start-date-text"] }}</time>{% endif -%}
   {% if organisation["start-date"] and organisation["end-date"] %}{% if organisation["end-date"] <= today %} and was {% else %} and will be {% endif %}{% endif -%}
-  {% if organisation["end-date"] %} dissolved on the <time datetime="{{ organisation["end-date"] }}">{{ organisation["end-date-text"] }}</time>{% endif -%}
+  {% if organisation["end-date"] %} dissolved on the <time datetime="{{ organisation['end-date'] }}">{{ organisation["end-date-text"] }}</time>{% endif -%}
   .
 {% endif %}
     </p>
@@ -72,7 +72,7 @@
       Organisation
     </dt>
     <dd class="govuk-summary-list__value">
-      <a href="https://{{organisation["prefix"]}}.register.gov.uk/record/{{organisation["id"]}}">{{organisation["organisation"]}}</a>
+      <a href="https://{{organisation['prefix']}}.register.gov.uk/record/{{organisation['id']}}">{{organisation["organisation"]}}</a>
     </dd>
   </div>
 
@@ -119,7 +119,7 @@
       Website
     </dt>
     <dd class="govuk-summary-list__value">
-      <a href="{{organisation["website"]}}">{{organisation["website"]}}</a>
+      <a href="{{organisation['website']}}">{{organisation["website"]}}</a>
     </dd>
   </div>
 
@@ -129,7 +129,7 @@
     Twitter
     </dt>
     <dd class="govuk-summary-list__value">
-    <p>@<a href="https://twitter.com/{{organisation["twitter"]}}">{{organisation["twitter"]}}</a></p>
+    <p>@<a href="https://twitter.com/{{organisation['twitter']}}">{{organisation["twitter"]}}</a></p>
     </dd>
   </div>
 {% endif %}
@@ -140,7 +140,7 @@
      Wikidata
     </dt>
     <dd class="govuk-summary-list__value">
-    <a href="https://wikidata.org/wiki/{{organisation["wikidata"]}}">{{organisation["wikidata"]}}</a>
+    <a href="https://wikidata.org/wiki/{{organisation['wikidata']}}">{{organisation["wikidata"]}}</a>
     </dd>
   </div>
 {% endif %}
@@ -162,7 +162,7 @@
      ESD Inventories
     </dt>
     <dd class="govuk-summary-list__value">
-    <a href="https://inventories.opendata.esd.org.uk/{{organisation["esd-inventories"]}}">{{organisation["esd-inventories"]}}</a>
+    <a href="https://inventories.opendata.esd.org.uk/{{organisation['esd-inventories']}}">{{organisation["esd-inventories"]}}</a>
     </dd>
   </div>
 {% endif %}
@@ -183,7 +183,7 @@
       data.gov.uk
     </dt>
     <dd class="govuk-summary-list__value">
-        <a href="https://data.gov.uk/search?filters%5Bpublisher%5D={{organisation["name"]}}">datasets</a>
+        <a href="https://data.gov.uk/search?filters%5Bpublisher%5D={{organisation['name']}}">datasets</a>
     </dd>
   </div>
 
@@ -193,8 +193,8 @@
     Open Data Communities organisation
     </dt>
     <dd class="govuk-summary-list__value">
-    <p><a href="{{organisation["opendatacommunities"]}}">{{organisation["opendatacommunities"]}}</a></p>
-    <input class="govuk-input copy-and-paste" type="text" value="{{organisation["opendatacommunities"]}}" readonly data-module="input-copy">
+    <p><a href="{{organisation['opendatacommunities']}}">{{organisation["opendatacommunities"]}}</a></p>
+    <input class="govuk-input copy-and-paste" type="text" value="{{organisation['opendatacommunities']}}" readonly data-module="input-copy">
     <!-- see huffduffer.com for how @adactio does this beautifully -->
     <p></p>
     </dd>
@@ -221,7 +221,7 @@
       Statistical geography
     </dt>
     <dd class="govuk-summary-list__value">
-      <a href="http://statistics.data.gov.uk/id/statistical-geography/{{organisation["statistical-geography"]}}">{{organisation["statistical-geography"]}}</a>
+      <a href="http://statistics.data.gov.uk/id/statistical-geography/{{organisation['statistical-geography']}}">{{organisation["statistical-geography"]}}</a>
     </dd>
   </div>
 {% endif %}
@@ -232,7 +232,7 @@
      TOID
     </dt>
     <dd class="govuk-summary-list__value">
-    <a href="http://data.ordnancesurvey.co.uk/id/{{organisation["toid"]}}">{{organisation["toid"]}}</a>
+    <a href="http://data.ordnancesurvey.co.uk/id/{{organisation['toid']}}">{{organisation["toid"]}}</a>
     </dd>
   </div>
 {% endif %}
@@ -254,7 +254,7 @@
     Open Data Communities area
     </dt>
     <dd class="govuk-summary-list__value">
-    <p><a href="{{organisation["opendatacommunities-area"]}}">{{organisation["opendatacommunities-area"]}}</a></p>
+    <p><a href="{{organisation['opendatacommunities-area']}}">{{organisation["opendatacommunities-area"]}}</a></p>
     </dd>
   </div>
 {% endif %}
