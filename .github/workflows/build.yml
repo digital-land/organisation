@@ -5,7 +5,7 @@ on:
     paths-ignore:
       - 'docs/**'
     branches:
-      - master
+      - main
   schedule:
     - cron: '0 6 * * *'
 
@@ -29,7 +29,7 @@ jobs:
         git config user.email "${DLB_BOT_EMAIL}"
         git config user.name "${DLB_BOT_USERNAME}"
         git remote set-url origin https://${DLB_BOT_USERNAME}:${DLB_BOT_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-        git checkout master
+        git checkout main
     - name: Install dependencies
       run: make init
     - name: Run make
@@ -37,4 +37,4 @@ jobs:
     - name: Commit files
       run: |
         git add docs
-        git diff --quiet && git diff --staged --quiet || (git commit -m "Build organisation pages on $(date +%F)"; git push origin master)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Build organisation pages on $(date +%F)"; git push origin main)
