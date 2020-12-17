@@ -16,3 +16,7 @@ init::
 
 clean:
 	rm -rf index.html ./development-corporation/ ./government-organisation/ ./local-authority-eng/ organisation.csv .cache
+
+collect:
+	mkdir -p data
+	wget -O data/slug-index.csv https://github.com/digital-land/slug-index/raw/main/index/slug-index.csv

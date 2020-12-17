@@ -16,6 +16,7 @@ from bin.jinja_setup import setup_jinja
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
+index_csv = os.environ.get("index_csv", "https://github.com/digital-land/slug-index/raw/main/index/slug-index.csv")
 organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
 organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/tag.csv")
 region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/region-collection/master/data/region.csv")
@@ -115,6 +116,15 @@ for o in csv.DictReader(get(organisation_csv).splitlines()):
 
 combined_authority_lists = constituent_districts(tags['local-authority-eng']["organisations"])
 
+from collections import defaultdict
+index = defaultdict(dict)
+
+# build children dict
+for child in csv.DictReader(get(index_csv).splitlines()):
+    i = index[child["organisation"]]
+    i.setdefault(child["dataset"], [])
+    i[child["dataset"]].append(child)
+
 for tag in tags:
     for o in tags[tag]["organisations"]:
         o["path"] = "/".join(o["path-segments"])
@@ -127,6 +137,11 @@ for tag in tags:
                     'organisation': comb_id,
                     'name': combined_authority_lists[comb_id]['name']
                 }
+
+        o["children"] = {}
+        if o["organisation"] in index:
+            o["children"] = index[o["organisation"]]
+
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
 with open("docs/index.html", "w") as f:
