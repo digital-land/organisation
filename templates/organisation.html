@@ -331,7 +331,7 @@
         <div id="accordion-related-data-content-{{loop.index}}" class="govuk-accordion__section-content" aria-labelledby="accordion-related-data-heading-{{loop.index}}">
           <ul class="govuk-list govuk-list--bullet">
               {% for row in slugs %}
-              <li><a href="{{ row['dataset-slug'] }}">{{ row['dataset-slug']|clean_slug }}</a></li>
+              <li><a href="/{{ row['dataset-slug'] }}">{{ row['dataset-slug']|clean_slug }}</a></li>
               {% endfor %}
           </ul>
         </div>
