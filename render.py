@@ -10,6 +10,7 @@ from datetime import datetime
 
 from filters.local_authority_type import LocalAuthorityTypeMapping
 from filters.organisation_url import organisation_url_filter
+from filters.utils import strip_slug, dataset_name
 from utils import get_csv_as_json, joiner
 
 from bin.jinja_setup import setup_jinja
@@ -83,6 +84,8 @@ env = setup_jinja()
 # register filters
 env.filters["local_authority_type"] = local_authority_type_filter
 env.filters["organisation_url"] = organisation_url_filter
+env.filters["clean_slug"] = strip_slug
+env.filters["clean_dataset_name"] = dataset_name
 # get page templates
 index_template = env.get_template("index.html")
 organisation_template = env.get_template("organisation.html")

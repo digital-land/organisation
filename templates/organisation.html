@@ -313,6 +313,36 @@
 </div>
 
 
+<div class="govuk-grid-row govuk-main-wrapper--l">
+  <div class="govuk-grid-column-full">
+    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
+    <h3 class="govuk-heading-l">Related data</h3>
+    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-related-data">
+      {% for t, slugs in organisation['children'].items() %}
+      {% if slugs|length >0 %}
+      <div class="govuk-accordion__section ">
+        <div class="govuk-accordion__section-header" id="{{ t }}">
+          <h2 class="govuk-accordion__section-heading">
+            <span class="govuk-accordion__section-button" id="accordion-related-data-heading-{{loop.index}}">
+              {{ t|clean_dataset_name }} ({{ slugs|length}})
+            </span>
+          </h2>
+        </div>
+        <div id="accordion-related-data-content-{{loop.index}}" class="govuk-accordion__section-content" aria-labelledby="accordion-related-data-heading-{{loop.index}}">
+          <ul class="govuk-list govuk-list--bullet">
+              {% for row in slugs %}
+              <li><a href="{{ row['dataset-slug'] }}">{{ row['dataset-slug']|clean_slug }}</a></li>
+              {% endfor %}
+          </ul>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+  </div>
+  </div>
+</div>
+
+
 {% endblock %}
 {% block bodyEnd %}
 {{ super() }}
