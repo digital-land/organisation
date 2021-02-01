@@ -13,7 +13,7 @@ from filters.organisation_url import organisation_url_filter
 from filters.utils import strip_slug, dataset_name
 from utils import get_csv_as_json, joiner
 
-from bin.jinja_setup import setup_jinja
+from digital_land_frontend.jinja import setup_jinja
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
