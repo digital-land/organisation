@@ -129,6 +129,16 @@
     </dd>
   </div>
 {% endif %}
+{% if organisation["wikipedia"] %}
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+     Wikipedia
+    </dt>
+    <dd class="govuk-summary-list__value">
+    <a href="{{organisation['wikipedia']}}">{{organisation["wikipedia"]}}</a>
+    </dd>
+  </div>
+{% endif %}
 {% if organisation["company"] %}
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
