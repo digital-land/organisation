@@ -8,7 +8,7 @@ from cachecontrol.caches.file_cache import FileCache
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
-local_authority_type_csv = os.environ.get("local_authority_type_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/register/local-authority-type.csv")
+local_authority_type_csv = os.environ.get("local_authority_type_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/collection/register/local-authority-type.csv")
 
 def get(url):
     r = session.get(url)

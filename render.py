@@ -18,10 +18,10 @@ from digital_land_frontend.jinja import setup_jinja
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
 index_csv = os.environ.get("index_csv", "https://github.com/digital-land/slug-index/raw/main/index/slug-index.csv")
-organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
-organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/tag.csv")
-region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/region-collection/master/data/region.csv")
-lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/local-resilience-forum.csv")
+organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/collection/organisation.csv")
+organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/data/tag.csv")
+region_csv = os.environ.get("region_csv", "https://raw.githubusercontent.com/digital-land/region-collection/main/data/region.csv")
+lrf_csv = os.environ.get("lrf_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/data/local-resilience-forum.csv")
 docs = "docs/"
 today = datetime.utcnow().isoformat()[:10]
 

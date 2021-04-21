@@ -12,10 +12,10 @@ from utils import joiner
 from bin.jinja_setup import setup_jinja
 
 # data endpoints
-organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
-organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/tag.csv")
-hub_csv = "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/hub.csv"
-la_to_hub_csv = "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/data/local-authority-to-hub.csv"
+organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/collection/organisation.csv")
+organisation_tag_csv = os.environ.get("organisation_tag_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/data/tag.csv")
+hub_csv = "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/data/hub.csv"
+la_to_hub_csv = "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/data/local-authority-to-hub.csv"
 
 docs = "docs/"
 today = datetime.utcnow().isoformat()[:10]

@@ -77,7 +77,7 @@ def testjoiner(cols):
     d1 = pd.read_csv("./data/hubs.csv", sep=",")
     jd1 = json.loads(d1.to_json(orient='records'))
 
-    # organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv")
+    # organisation_csv = os.environ.get("organisation_csv", "https://raw.githubusercontent.com/digital-land/organisation-dataset/main/collection/organisation.csv")
     # d2 = pd.read_csv(organisation_csv, sep=",")
     # jd2 = json.loads(d2.to_json(orient='records'))
     d2 = pd.read_csv("./data/hubsv2.csv", sep=",")
