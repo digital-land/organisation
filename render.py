@@ -2,6 +2,7 @@
 
 import os
 import csv
+import json
 from collections import OrderedDict
 import requests
 from cachecontrol import CacheControl
@@ -14,6 +15,7 @@ from filters.utils import strip_slug, dataset_name
 from utils import get_csv_as_json, joiner
 
 from digital_land_frontend.jinja import setup_jinja
+from digital_land_frontend.filters import hex_to_rgb_string_filter
 
 session = CacheControl(requests.session(), cache=FileCache(".cache"))
 
@@ -73,6 +75,38 @@ def constituent_districts(organisations):
     return constituent_lists
 
 
+dataset_settings = [
+    {
+        "dataset": "brownfield-land",
+        "label": "Brownfield land",
+        "paint_options": {
+            "colour": "#745729",
+        },
+        "type": "point",
+    },
+    {
+        "dataset": "conservation-area",
+        "label": "Conservation areas",
+        "paint_options": {
+            "colour": "#78AA00",
+        },
+    },
+    {
+        "dataset": "open-space",
+        "label": "Open spaces",
+        "paint_options": {
+            "colour": "#5694ca",
+        },
+    }
+    ]
+
+
+def get_referencing_datasets(id):
+    url = f'https://datasette-demo.digital-land.info/view_model/geography_datasets_for_organisation.json?organisation={id}'
+    data = json.loads(get(url))
+    datasetNames = [d[0] for d in data['rows']]
+    return [d for d in dataset_settings if d['dataset'] in datasetNames]
+
 la_type_mapping = LocalAuthorityTypeMapping()
 def local_authority_type_filter(k):
     if la_type_mapping.get_local_authority_type_name(k) is not None:
@@ -86,9 +120,11 @@ env.filters["local_authority_type"] = local_authority_type_filter
 env.filters["organisation_url"] = organisation_url_filter
 env.filters["clean_slug"] = strip_slug
 env.filters["clean_dataset_name"] = dataset_name
+env.filters["hex_to_rgb"] = hex_to_rgb_string_filter
 # get page templates
 index_template = env.get_template("index.html")
 organisation_template = env.get_template("organisation.html")
+organisation_map_template = env.get_template("organisation-map.html")
 
 
 # fetch associated data
@@ -144,6 +180,11 @@ for tag in tags:
         o["children"] = {}
         if o["organisation"] in index:
             o["children"] = index[o["organisation"]]
+        
+        # render a planning-data for local authorities
+        if 'local-authority-eng' in o['tags']:
+            o['datasets'] = get_referencing_datasets(o['organisation'])
+            render(o["path"] + "/planning-data" + "/index.html", organisation_map_template, tags, organisation=o)
 
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)
 
