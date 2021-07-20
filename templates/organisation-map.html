@@ -1,0 +1,103 @@
+{% extends "digital-land-frontend/dlf-base.html" %}
+
+{% set includesMap = true %}
+{% block pageTitle %}National map of planning data | Digital Land{% endblock %}
+
+{%- block dlHead %}
+<script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
+{% endblock -%}
+
+{% block content %}
+
+<h1 class="govuk-heading-l">{{ organisation['name'] }} planning data</h1>
+
+<p id="aria-label-national-map" class="govuk-body">A map of {{ organisation['name'] }} planning data collected by Digital Land.</p>
+
+<div class="dl-map__wrapper" style="min-height: 700px;">
+
+  {% include 'digital-land-frontend/partials/dl-zoom-controls.html' %}
+
+  {% macro layerControlItem(layer) %}
+  <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="{{ layer.dataset }}" 
+  {% if layer.type %}data-layer-data-type={{layer.type}}{% endif %} 
+  {% if layer.paint_options %}data-style-options="{{ layer.paint_options.colour }},{{ layer.paint_options.opacity }}"{% endif %}>
+    <div class="govuk-checkboxes__item">
+      <input class="govuk-checkboxes__input" id="{{ layer.dataset }}" name="{{ layer.dataset }}" type="checkbox" value="{{ layer.dataset }}" {{ "checked='checked'" if layer.checked }}>
+      <label class="govuk-label govuk-checkboxes__label" for="{{ layer.dataset }}">
+        <span class="dl-label__key">
+          <span class="dl-label__key__symbol{{ ' dl-label__key__symbol--circle' if layer.type and layer.type == 'point' }}"
+          style="border-color: {{layer.paint_options.colour|default('#003078')}}; background: rgba({{layer.paint_options.colour|default('#003078')|hex_to_rgb}},{{ layer.paint_options.opacity|default('0.5') }});"></span>
+          {{ layer.label }}
+        </span>
+      </label>
+    </div>
+  </li>
+  {% endmacro %}
+
+  <div id="mapid" class="dl-map" aria-labelledby="aria-label-national-map"></div>
+  <div class="dl-map__side-panel dl-map__side-panel--full js-hidden" tabindex="-1" role="dialog" aria-hidden="false" open="true" aria-modal="true">
+    <div class="dl-map__side-panel__heading">
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Data layers</h3>
+    </div>
+    <div class="dl-map__side-panel__content">
+      <ul class="govuk-list govuk-!-margin-bottom-0" data-module="layer-controls">
+        <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="local-authority-district" data-style-options="#0b0c0c,0.1" data-layer-control-active="true">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="local-authority-district" name="local-authority-district" type="checkbox" value="local-authority-district" checked=checked>
+              <label class="govuk-label govuk-checkboxes__label" for="local-authority-district">
+                <span class="dl-label__key">
+                  <span class="dl-label__key__symbol" style="border-color: #0b0c0c; background: rgba(11,12,12,0.1);"></span>
+                  Local authority district
+                </span>
+              </label>
+            </div>
+        </li>
+        <h3 class="govuk-heading-s">Published by local authority</h3>
+        {% for layer in organisation['dataset_settings'] %}
+        {{ layerControlItem(layer) }}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="govuk-!-margin-top-9 govuk-!-padding-top-3">
+  <h2 class="govuk-heading-m">Looking for data about {{ organisation['name'] }}?</h2>
+  <p class="govuk-body">You can see the data about {{ organisation['name'] }}on the <a href="../">{{ organisation['name'] }} organisation page</a>.</p>
+</div>
+{% endblock %}
+
+{% block feedbackPrompt %}
+    {%- from "digital-land-frontend/components/feedback/macro.html" import dlFeedback %}
+    {{ dlFeedback({
+        "text": "Spotted an issue? Let us know so we can improve the map.",
+        "action": {
+            "text": "There is something wrong with the map",
+            "href": "mailto:DigitalLand@communities.gov.uk"
+        },
+        "container": true
+        })
+    }}
+{% endblock %}
+
+{% block bodyEnd %}
+{{ super() }}
+<script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
+<script src="{{ staticPath|default('/static') }}/javascripts/organisation-map-controller.js"></script>
+
+<script>
+  // grab html elements
+  const $controlsList = document.querySelector('[data-module="layer-controls"]')
+  const $zoomMod = document.querySelector('[data-module="zoom-controls"]')
+
+  const organisationId = "{{ organisation['organisation'] }}";
+  const statGeography = "{{ organisation['statistical-geography'] }}";
+  const datasets = {{ organisation['datasets']|tojson }};
+  // init national map
+  const mapController = new OrgMapController($controlsList, $zoomMod, datasets, organisationId, statGeography).init({
+    baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
+  })
+
+</script>
+{% endblock %}
