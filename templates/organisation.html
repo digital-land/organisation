@@ -356,8 +356,21 @@
   </div>
 </div>
 
-
 {% endblock %}
+
+{% block feedbackPrompt %}
+    {%- from "digital-land-frontend/components/feedback/macro.html" import dlFeedback %}
+    {{ dlFeedback({
+        "text": "Spotted an issue? Let us know so we can improve the data.",
+        "action": {
+            "text": "There is something wrong with the data",
+            "href": "mailto:DigitalLand@communities.gov.uk"
+        },
+        "container": true
+        })
+    }}
+{% endblock %}
+
 {% block bodyEnd %}
 {{ super() }}
 <script type="application/javascript">
