@@ -16,20 +16,7 @@
 
 <div class="dl-map__wrapper" style="min-height: 700px;">
 
-  <div class="zoom-controls" data-module="zoom-controls">
-    <button class="zoom-controls__btn" data-zoom-control="in">
-      <span class="govuk-visually-hidden">Zoom in</span>
-      <span>+</span>
-    </button>
-    <span class="zoom-controls__count-container" aria-live="polite">
-      <span class="govuk-visually-hidden">The map is at zoom level </span>
-      <span class="zoom-controls__count">6</span>
-    </span>
-    <button class="zoom-controls__btn" data-zoom-control="out">
-      <span class="govuk-visually-hidden">Zoom out</span>
-      <span>-</span>
-    </button>
-  </div>
+  {% include 'digital-land-frontend/partials/dl-zoom-controls.html' %}
 
   {% macro layerControlItem(layer) %}
   <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="{{ layer.dataset }}" 
