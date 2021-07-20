@@ -183,7 +183,16 @@ for tag in tags:
         
         # render a planning-data for local authorities
         if 'local-authority-eng' in o['tags']:
-            o['datasets'] = get_referencing_datasets(o['organisation'])
+            o['dataset_settings'] = get_referencing_datasets(o['organisation'])
+            o['datasets'] = [
+                { 'name': 'local-authority-district', 'type': 'shape' }
+            ]
+            for d in o['dataset_settings']:
+                da = {
+                    'name': d['dataset']
+                }
+                da['type'] = d['type'] if 'type' in d.keys() else 'shape'
+                o['datasets'].append(da)
             render(o["path"] + "/planning-data" + "/index.html", organisation_map_template, tags, organisation=o)
 
         render(o["path"] + "/index.html", organisation_template, tags, organisation=o)

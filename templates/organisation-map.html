@@ -10,12 +10,9 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">East Suffolk planning data</h1>
+<h1 class="govuk-heading-l">{{ organisation['name'] }} planning data</h1>
 
-<p id="aria-label-national-map" class="govuk-body">A map of East Suffolk planning data collected by Digital Land.</p>
-
-<a class="brownfield-btn" href="#">brownfield</a>
-<a class="local-authority-btn" href="#">local authority boundary</a>
+<p id="aria-label-national-map" class="govuk-body">A map of {{ organisation['name'] }} planning data collected by Digital Land.</p>
 
 <div class="dl-map__wrapper" style="min-height: 700px;">
 
@@ -70,7 +67,7 @@
             </div>
         </li>
         <h3 class="govuk-heading-s">Published by local authority</h3>
-        {% for layer in layers %}
+        {% for layer in organisation['dataset_settings'] %}
         {{ layerControlItem(layer) }}
         {% endfor %}
       </ul>
@@ -78,9 +75,9 @@
   </div>
 </div>
 
-<div class="follow-on-panel">
-  <h2 class="govuk-heading-m">Looking for data about East Suffolk?</h2>
-  <p class="govuk-body">You can see the data about East Suffolk on the <a href="../">East Suffolk organisation page</a>.</p>
+<div class="govuk-!-margin-top-9 govuk-!-padding-top-3">
+  <h2 class="govuk-heading-m">Looking for data about {{ organisation['name'] }}?</h2>
+  <p class="govuk-body">You can see the data about {{ organisation['name'] }}on the <a href="../">{{ organisation['name'] }} organisation page</a>.</p>
 </div>
 {% endblock %}
 
@@ -100,23 +97,18 @@
 {% block bodyEnd %}
 {{ super() }}
 <script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
-<script src="/static/js/dl-maps.js"></script>
-<script src="/static/js/organisation-map-controller.js"></script>
+<script src="{{ staticPath|default('/static') }}/javascripts/organisation-map-controller.js"></script>
 
 <script>
   // grab html elements
   const $controlsList = document.querySelector('[data-module="layer-controls"]')
   const $zoomMod = document.querySelector('[data-module="zoom-controls"]')
 
-  const datasets = [
-      { name: 'brownfield-land', type: 'point' },
-      { name: 'conservation-area', type: 'shape' },
-      { name: 'local-authority-district', type: 'shape' },
-      { name: 'open-space', type: 'shape' }
-  ]
+  const organisationId = "{{ organisation['organisation'] }}";
+  const statGeography = "{{ organisation['statistical-geography'] }}";
+  const datasets = {{ organisation['datasets']|tojson }};
   // init national map
-  const mapController = new MapController($controlsList, $zoomMod, datasets, 'local-authority-eng:ESK', 'E07000244').init({
-    //baseTileStyleFilePath: "https://digital-land.github.io/map/base-tile.json"
+  const mapController = new OrgMapController($controlsList, $zoomMod, datasets, organisationId, statGeography).init({
     baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
   })
 
