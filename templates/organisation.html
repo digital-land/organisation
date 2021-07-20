@@ -220,7 +220,20 @@
   </dl>
 </div>
 
+<div class="govuk-grid-column-one-third">
+  <aside class="app-related-items" role="complementary">
+    <h2 class="govuk-heading-s" id="download">Download the data</h2>
+    <p class="govuk-body">You can download the data on this page as:</p>
+    <ul class="govuk-list">
+      <li><a href="https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv">CSV</a></li>
+    </ul>
 
+    {% if 'local-authority-eng' in organisation['tags'] -%}
+    <h2 class="govuk-heading-s" id="download">Explore planning data</h2>
+    <p class="govuk-body"><a href="#">Explore the East Suffolk planning data</a>.</p>
+    {%- endif %}
+  </aside>
+</div>
 
 </div>
 
@@ -306,16 +319,6 @@
   </div>
 </div>
 {% endif %}
-
-<div class="govuk-grid-row govuk-main-wrapper--l">
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l" id="download">Download the data</h2>
-    <p class="govuk-body">You can download the data on this page as:</p>
-    <ul class="govuk-list">
-      <li><a href="https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv">CSV</a></li>
-    </ul>
-  </div>
-</div>
 
 
 <div class="govuk-grid-row govuk-main-wrapper--l">
