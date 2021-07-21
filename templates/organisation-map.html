@@ -21,10 +21,10 @@
     },
     {
       "text": organisation["name"],
-      "href": "/organisation/" + organisation['path']
+      "href": "../"
     },
     {
-      "text": "Planning data"
+      "text": "Published data"
     }
   ]
 }) }}
@@ -32,7 +32,7 @@
 
 {% block content %}
 
-<h1 class="govuk-heading-l">{{ organisation['name'] }} planning data</h1>
+<h1 class="govuk-heading-l">Data published by {{ organisation['name'] }}</h1>
 
 <p id="aria-label-national-map" class="govuk-body">A map of {{ organisation['name'] }} planning data collected by Digital Land.</p>
 
