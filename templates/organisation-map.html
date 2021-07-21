@@ -8,6 +8,28 @@
 <link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
 {% endblock -%}
 
+{% block dl_breadcrumbs %}
+{{ govukBreadcrumbs({
+  "items": [
+    {
+      "text": "Digital Land",
+      "href": "https://digital-land.github.io/"
+    },
+    {
+      "text": "Organisations",
+      "href": "https://digital-land.github.io/organisation/"
+    },
+    {
+      "text": organisation["name"],
+      "href": "/organisation/" + organisation['path']
+    },
+    {
+      "text": "Planning data"
+    }
+  ]
+}) }}
+{% endblock %}
+
 {% block content %}
 
 <h1 class="govuk-heading-l">{{ organisation['name'] }} planning data</h1>
