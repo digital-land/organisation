@@ -2,7 +2,7 @@
 <html lang="en" class="govuk-template ">
   <head>
     <meta charset="utf-8">
-    <title>East Northamptonshire Council | Organisations | Digital Land</title>
+    <title>National map of planning data | Digital Land</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <meta name="theme-color" content="#0b0c0c"> 
     
@@ -40,6 +40,9 @@ crossorigin="" />
 	
 	<link href="https://digital-land.github.io/stylesheets/dl-frontend.css" rel="stylesheet" />
 	
+<script src="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.js"></script>
+<link href="https://unpkg.com/maplibre-gl@1.14.0-rc.1/dist/maplibre-gl.css" rel="stylesheet" />
+
     
     
     <meta property="og:image" content="/images/govuk-opengraph-image.png">
@@ -138,7 +141,8 @@ crossorigin="" />
     
       <div class="govuk-width-container ">
         
-  <div class="govuk-phase-banner govuk-width-container">
+	
+<div class="govuk-phase-banner">
   <p class="govuk-phase-banner__content"><strong class="govuk-tag govuk-phase-banner__content__tag ">
   prototype
 </strong><span class="govuk-phase-banner__text">
@@ -146,8 +150,8 @@ crossorigin="" />
     </span>
   </p>
 </div>
-
-  <div class="govuk-breadcrumbs ">
+	
+<div class="govuk-breadcrumbs ">
   <ol class="govuk-breadcrumbs__list">
   
     
@@ -163,7 +167,13 @@ crossorigin="" />
     
   
     
-    <li class="govuk-breadcrumbs__list-item" aria-current="page">East Northamptonshire Council</li>
+    <li class="govuk-breadcrumbs__list-item">
+      <a class="govuk-breadcrumbs__link" href="../">North Northamtonshire Council</a>
+    </li>
+    
+  
+    
+    <li class="govuk-breadcrumbs__list-item" aria-current="page">Published data</li>
     
   
   </ol>
@@ -172,291 +182,59 @@ crossorigin="" />
 
         <main class="govuk-main-wrapper " id="main-content" role="main">
           
-<div class="govuk-grid-row">
-	<div class="govuk-grid-column-full">
-  <span class="govuk-caption-xl">Organisation</span>
-  <h1 class="govuk-heading-xl">Data about East Northamptonshire Council</h1>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l" id="organisation">Organisation</h2>
-    <p class="govuk-body-l">
+<h1 class="govuk-heading-l">Data published by North Northamtonshire Council</h1>
 
-  This organisation was
-   established on the <time datetime="2020-03-31">31 March 2020</time>.
+<p id="aria-label-national-map" class="govuk-body">A map of North Northamtonshire Council planning data collected by Digital Land.</p>
 
-    </p>
+<div class="dl-map__wrapper" style="min-height: 700px;">
 
-<dl class="govuk-summary-list">
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Organisation
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <a href="https://local-authority-eng.register.gov.uk/record/ENO">local-authority-eng:ENO</a>
-    </dd>
-  </div>
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Local authority type
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <a href="https://local-authority-type.register.gov.uk/record/NMD">NMD</a>
-      (Non-metropolitan district)</dd>
-  </div>
-<div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Website
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <a href="https://www.east-northamptonshire.gov.uk">https://www.east-northamptonshire.gov.uk</a>
-    </dd>
-  </div>
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-     Wikidata
-    </dt>
-    <dd class="govuk-summary-list__value">
-    <a href="https://wikidata.org/wiki/Q73072604">Q73072604</a>
-    </dd>
-  </div>
-
-
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-     Billing authority
-    </dt>
-    <dd class="govuk-summary-list__value">
-    E2833
-    </dd>
-  </div>
-
-
-
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    AddressBase Custodian
-    </dt>
-    <dd class="govuk-summary-list__value">
-    2815
-    </dd>
-  </div>
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      data.gov.uk
-    </dt>
-    <dd class="govuk-summary-list__value">
-        <a href="https://data.gov.uk/search?filters%5Bpublisher%5D=East Northamptonshire Council">datasets</a>
-    </dd>
-  </div>
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Open Data Communities organisation
-    </dt>
-    <dd class="govuk-summary-list__value">
-    <p><a href="http://opendatacommunities.org/id/district-council/east-northamptonshire">http://opendatacommunities.org/id/district-council/east-northamptonshire</a></p>
-    <input class="govuk-input copy-and-paste" type="text" value="http://opendatacommunities.org/id/district-council/east-northamptonshire" readonly data-module="input-copy">
-    <!-- see huffduffer.com for how @adactio does this beautifully -->
-    <p></p>
-    </dd>
-  </div>
-<div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      <a href="https://www.gov.uk/guidance/local-resilience-forums-contact-details" class="govuk-link">Local resilience forum</a>
-    </dt>
-    <dd class="govuk-summary-list__value">
-    Northamptonshire
-    </dd>
-  </div></dl>
+  <div class="zoom-controls" data-module="zoom-controls">
+  <button class="zoom-controls__btn" data-zoom-control="in">
+    <span class="govuk-visually-hidden">Zoom in</span>
+    <span>+</span>
+  </button>
+  <span class="zoom-controls__count-container" aria-live="polite">
+    <span class="govuk-visually-hidden">The map is at zoom level </span>
+    <span class="zoom-controls__count">6</span>
+  </span>
+  <button class="zoom-controls__btn" data-zoom-control="out">
+    <span class="govuk-visually-hidden">Zoom out</span>
+    <span>-</span>
+  </button>
 </div>
 
-<div class="govuk-grid-column-one-third">
-  <aside class="app-related-items" role="complementary">
-    <h2 class="govuk-heading-s" id="download">Download the data</h2>
-    <p class="govuk-body">You can download the data on this page as:</p>
-    <ul class="govuk-list">
-      <li><a href="https://raw.githubusercontent.com/digital-land/organisation-dataset/master/collection/organisation.csv">CSV</a></li>
-    </ul>
-
-    <h2 class="govuk-heading-s" id="download">Explore planning data</h2>
-    <p class="govuk-body"><a href="planning-data">Explore the East Northamptonshire Council planning data</a>.</p>
-  </aside>
-</div>
-
-</div>
-
-
-<div class="govuk-grid-row govuk-main-wrapper--l">
-  <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l" id="geographical-area">Geographical area</h2>
-
-<dl class="govuk-summary-list">
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Statistical geography
-    </dt>
-    <dd class="govuk-summary-list__value">
-      <a href="http://statistics.data.gov.uk/id/statistical-geography/E07000152">E07000152</a>
-    </dd>
-  </div>
-
-
-
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Census area
-    </dt>
-    <dd class="govuk-summary-list__value">
-    34UD
-    </dd>
-  </div>
-
-
-
-  <div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-    Open Data Communities area
-    </dt>
-    <dd class="govuk-summary-list__value">
-    <p><a href="http://opendatacommunities.org/id/geography/administration/nmd/E07000152">http://opendatacommunities.org/id/geography/administration/nmd/E07000152</a></p>
-    </dd>
-  </div>
-<div class="govuk-summary-list__row">
-    <dt class="govuk-summary-list__key">
-      Region
-    </dt>
-    <dd class="govuk-summary-list__value">
-    East Midlands
-    </dd>
-  </div></dl><div class="map-wrapper govuk-!-padding-top-0">
-  <h4 class="govuk-heading-s">Boundary</h4>
   
-<div class="dl-map__wrapper " style="min-height: 350px;"><div 
-        class="dl-map govuk-!-margin-top-1 govuk-!-margin-bottom-2"
-        id="aMap"
-        data-module="boundary-map" data-geojson-urls="https://raw.githubusercontent.com/digital-land/boundary-collection/master/collection/local-authority/E07000152/index.geojson"   
-    >
-        <noscript>To view this map, you need to enable JavaScript.</noscript>
+
+  <div id="mapid" class="dl-map" aria-labelledby="aria-label-national-map"></div>
+  <div class="dl-map__side-panel dl-map__side-panel--full js-hidden" tabindex="-1" role="dialog" aria-hidden="false" open="true" aria-modal="true">
+    <div class="dl-map__side-panel__heading">
+      <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Data layers</h3>
     </div>
-    
-
-    
-</div>
-
-</div>
-<p class="govuk-body">Download the <a href="https://raw.githubusercontent.com/digital-land/boundary-collection/master/collection/local-authority/E07000152/index.geojson">boundary GeoJSON</a>.</p></div>
-</div>
-
-
-
-<div class="govuk-grid-row govuk-main-wrapper--l">
-  <div class="govuk-grid-column-full">
-    <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
-    <h3 class="govuk-heading-l">Related data</h3>
-    <div class="govuk-accordion" data-module="govuk-accordion" id="accordion-related-data">
-      
-      
-      <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header" id="brownfield-land">
-          <h2 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-related-data-heading-1">
-              Brownfield land (7)
-            </span>
-          </h2>
-        </div>
-        <div id="accordion-related-data-content-1" class="govuk-accordion__section-content" aria-labelledby="accordion-related-data-heading-1">
-          <ul class="govuk-list govuk-list--bullet">
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E26">
-              
-              BFR E26 (BFR-E26)
-              
-              </a></li>
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E56">
-              
-              BFR E56 (BFR-E56)
-              
-              </a></li>
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E65">
-              
-              BFR E65 (BFR-E65)
-              
-              </a></li>
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E66">
-              
-              BFR E66 (BFR-E66)
-              
-              </a></li>
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E67">
-              
-              BFR E67 (BFR-E67)
-              
-              </a></li>
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E65">
-              
-              BFR E65 (BFR-E65)
-              
-              </a></li>
-              
-              <li><a href="/brownfield-land/local-authority-eng/ENO/BFR-E66">
-              
-              BFR E66 (BFR-E66)
-              
-              </a></li>
-              
-          </ul>
-        </div>
-      </div>
-      
-      
-      
-      <div class="govuk-accordion__section ">
-        <div class="govuk-accordion__section-header" id="local-plan">
-          <h2 class="govuk-accordion__section-heading">
-            <span class="govuk-accordion__section-button" id="accordion-related-data-heading-2">
-              Local plan (1)
-            </span>
-          </h2>
-        </div>
-        <div id="accordion-related-data-content-2" class="govuk-accordion__section-content" aria-labelledby="accordion-related-data-heading-2">
-          <ul class="govuk-list govuk-list--bullet">
-              
-              <li><a href="/local-plan/b818aff3-bd8a-4243-8e7a-e4ac402182de">
-              
-              North Northamptonshire Joint Core Strategy 2011-2031 (b818aff3-bd8a-4243-8e7a-e4ac402182de)
-              
-              </a></li>
-              
-          </ul>
-        </div>
-      </div>
-      
-      
-  </div>
+    <div class="dl-map__side-panel__content">
+      <ul class="govuk-list govuk-!-margin-bottom-0" data-module="layer-controls">
+        <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="local-authority-district" data-style-options="#0b0c0c,0.1" data-layer-control-active="true">
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="local-authority-district" name="local-authority-district" type="checkbox" value="local-authority-district" checked=checked>
+              <label class="govuk-label govuk-checkboxes__label" for="local-authority-district">
+                <span class="dl-label__key">
+                  <span class="dl-label__key__symbol" style="border-color: #0b0c0c; background: rgba(11,12,12,0.1);"></span>
+                  Local authority district
+                </span>
+              </label>
+            </div>
+        </li>
+        <h3 class="govuk-heading-s">Published by local authority</h3>
+        
+      </ul>
+    </div>
   </div>
 </div>
 
+<div class="govuk-!-margin-top-9 govuk-!-padding-top-3">
+  <h2 class="govuk-heading-m">Looking for data about North Northamtonshire Council?</h2>
+  <p class="govuk-body">You can see the data about North Northamtonshire Council on the <a href="../">North Northamtonshire Council organisation page</a>.</p>
+</div>
 
         </main>
       </div>
@@ -472,12 +250,12 @@ crossorigin="" />
     <div class="dlf-feedback__prompt">
         <div class="dlf-feedback__prompt-content">
             
-            <span class="dlf-feedback__prompt-content__text">Spotted an issue? Let us know so we can improve the data.</span>
+            <span class="dlf-feedback__prompt-content__text">Spotted an issue? Let us know so we can improve the map.</span>
             
         </div>
         
         <div class="dlf-feedback__prompt-action">
-            <a href="mailto:DigitalLand@communities.gov.uk" class="govuk-button dlf-feedback__prompt__link">There is something wrong with the data</a>
+            <a href="mailto:DigitalLand@communities.gov.uk" class="govuk-button dlf-feedback__prompt__link">There is something wrong with the map</a>
         </div>
         
     </div>
@@ -587,22 +365,22 @@ crossorigin="" />
 	
 
 
-<script type="application/javascript">
-var doNotTrack = false;
-if (!doNotTrack) {
-window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
-ga('create', 'UA-127566551-1', 'auto');
-ga('send', 'pageview');
-}
-</script>
-<script async src='https://www.google-analytics.com/analytics.js'></script><script>
-  const $mapElement = document.querySelector('[data-module="boundary-map"]')
-  new DLMaps.Map($mapElement).init({})
-</script><script>
-  const $inputCopyElements = document.querySelectorAll('[data-module*="input-copy"]')
-  $inputCopyElements.forEach(function(el) {
-      new window.DLFrontend.InputCopy(el).init()
+<script src='https://unpkg.com/@turf/turf@6.3.0/turf.min.js'></script>
+<script src="https://digital-land.github.io/javascripts/organisation-map-controller.js"></script>
+
+<script>
+  // grab html elements
+  const $controlsList = document.querySelector('[data-module="layer-controls"]')
+  const $zoomMod = document.querySelector('[data-module="zoom-controls"]')
+
+  const organisationId = "local-authority-eng:NNUA";
+  const statGeography = "E06000061";
+  const datasets = [{"name": "local-authority-district", "type": "shape"}];
+  // init national map
+  const mapController = new OrgMapController($controlsList, $zoomMod, datasets, organisationId, statGeography).init({
+    baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
   })
+
 </script>
 
   </body>
