@@ -102,7 +102,7 @@ dataset_settings = [
 
 
 def get_referencing_datasets(id):
-    url = f'https://datasette-demo.digital-land.info/view_model/geography_datasets_for_organisation.json?organisation={id}'
+    url = f'https://datasette.digital-land.info/view_model/geography_datasets_for_organisation.json?organisation={id}'
     data = json.loads(get(url))
     datasetNames = [d[0] for d in data['rows']]
     return [d for d in dataset_settings if d['dataset'] in datasetNames]
