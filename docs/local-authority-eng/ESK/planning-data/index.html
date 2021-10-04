@@ -260,23 +260,6 @@ crossorigin="" />
   </li>
   
         
-        
-  <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="open-space" 
-   
-  data-style-options="#5694ca,">
-    <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="open-space" name="open-space" type="checkbox" value="open-space" >
-      <label class="govuk-label govuk-checkboxes__label" for="open-space">
-        <span class="dl-label__key">
-          <span class="dl-label__key__symbol"
-          style="border-color: #5694ca; background: rgba(86,148,202,0.5);"></span>
-          Open spaces
-        </span>
-      </label>
-    </div>
-  </li>
-  
-        
       </ul>
     </div>
   </div>
@@ -426,7 +409,7 @@ crossorigin="" />
 
   const organisationId = "local-authority-eng:ESK";
   const statGeography = "E07000244";
-  const datasets = [{"name": "local-authority-district", "type": "shape"}, {"name": "brownfield-land", "type": "point"}, {"name": "conservation-area", "type": "shape"}, {"name": "open-space", "type": "shape"}];
+  const datasets = [{"name": "local-authority-district", "type": "shape"}, {"name": "brownfield-land", "type": "point"}, {"name": "conservation-area", "type": "shape"}];
   // init national map
   const mapController = new OrgMapController($controlsList, $zoomMod, datasets, organisationId, statGeography).init({
     baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
