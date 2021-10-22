@@ -36,11 +36,11 @@
 <div class="govuk-grid-row">
 	<div class="govuk-grid-column-full">
   <span class="govuk-caption-xl">Organisation</span>
-  <h1 class="govuk-heading-xl">Data about {{organisation["name"]}}</h1>
+  <h1 class="govuk-heading-xl">{{organisation["name"]}}</h1>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <h2 class="govuk-heading-l" id="organisation">Organisation</h2>
+    <h2 class="govuk-heading-l" id="organisation">Data about this organisation</h2>
     <p class="govuk-body-l">
 {% if organisation["start-date"] or organisation["end-date"] %}
   This organisation was
