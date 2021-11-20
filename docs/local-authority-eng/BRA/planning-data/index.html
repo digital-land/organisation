@@ -226,23 +226,6 @@ crossorigin="" />
         </li>
         <h3 class="govuk-heading-s">Published by local authority</h3>
         
-        
-  <li class="dl-map__layer-item govuk-!-margin-bottom-2" data-layer-control="brownfield-land" 
-  data-layer-data-type=point 
-  data-style-options="#745729,">
-    <div class="govuk-checkboxes__item">
-      <input class="govuk-checkboxes__input" id="brownfield-land" name="brownfield-land" type="checkbox" value="brownfield-land" >
-      <label class="govuk-label govuk-checkboxes__label" for="brownfield-land">
-        <span class="dl-label__key">
-          <span class="dl-label__key__symbol dl-label__key__symbol--circle"
-          style="border-color: #745729; background: rgba(116,87,41,0.5);"></span>
-          Brownfield land
-        </span>
-      </label>
-    </div>
-  </li>
-  
-        
       </ul>
     </div>
   </div>
@@ -392,7 +375,7 @@ crossorigin="" />
 
   const organisationId = "local-authority-eng:BRA";
   const statGeography = "E07000067";
-  const datasets = [{"name": "local-authority-district", "type": "shape"}, {"name": "brownfield-land", "type": "point"}];
+  const datasets = [{"name": "local-authority-district", "type": "shape"}];
   // init national map
   const mapController = new OrgMapController($controlsList, $zoomMod, datasets, organisationId, statGeography).init({
     baseTileStyleFilePath: "https://api.maptiler.com/maps/918166e5-9890-4e18-8f18-4ef96be1a2d4/style.json?key=kira3KM2jYGvDA4xNkYt"
